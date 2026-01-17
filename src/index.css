@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos personalizados */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased text-gray-800 bg-gradient-to-b from-gray-50 to-white;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  /* Gradientes personalizados */
+  .gradient-verde {
+    @apply bg-gradient-to-r from-verde to-verde-claro;
+  }
+  
+  .gradient-celeste {
+    @apply bg-gradient-to-r from-celeste to-celeste-claro;
+  }
+  
+  .gradient-morado {
+    @apply bg-gradient-to-r from-morado to-morado-claro;
+  }
+  
+  /* Animaciones */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
