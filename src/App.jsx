@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronDown, FiChevronUp, FiMenu, FiX } from 'react-icons/fi';
 
+// Importa las imágenes
+import CEP from './assets/CEP.png';
+import CI from './assets/CI.png';
+import CIS from './assets/CIS.png';
+import LogoCentro from './assets/logo_centro_empresariales.png';
+
 function App() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,16 +17,22 @@ function App() {
       id: 'ingles',
       title: 'Inglés',
       color: 'verde',
-      icon: '🌐',
+      logo: CI,
       description: 'Domina el idioma global',
       content: (
-        <div className="space-y-4">
-          <div className="p-4 bg-verde/10 rounded-xl">
-            <h4 className="font-bold text-verde mb-2">Cursos disponibles:</h4>
+        <div className="space-y-3">
+          <div className="p-4 bg-verde/10 rounded-xl border border-verde/20">
+            <h4 className="font-bold text-verde mb-3 text-lg">Opciones disponibles:</h4>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2">✅ Opción1</li>
-              <li className="flex items-center gap-2">✅ Opción2</li>
-              <li className="flex items-center gap-2">✅ Opción3</li>
+              <motion.li whileHover={{ x: 5, scale: 1.02 }} className="flex items-center gap-2 text-sm">
+                ✅ Opción1
+              </motion.li>
+              <motion.li whileHover={{ x: 5, scale: 1.02 }} className="flex items-center gap-2 text-sm">
+                ✅ Opción2
+              </motion.li>
+              <motion.li whileHover={{ x: 5, scale: 1.02 }} className="flex items-center gap-2 text-sm">
+                ✅ Opción3
+              </motion.li>
             </ul>
           </div>
         </div>
@@ -30,16 +42,22 @@ function App() {
       id: 'computacion',
       title: 'Computación',
       color: 'celeste',
-      icon: '💻',
+      logo: CIS,
       description: 'Tecnologías del futuro',
       content: (
-        <div className="space-y-4">
-          <div className="p-4 bg-celeste/10 rounded-xl">
-            <h4 className="font-bold text-celeste mb-2">Cursos disponibles:</h4>
+        <div className="space-y-3">
+          <div className="p-4 bg-celeste/10 rounded-xl border border-celeste/20">
+            <h4 className="font-bold text-celeste mb-3 text-lg">Opciones disponibles:</h4>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2">✅ Opción1</li>
-              <li className="flex items-center gap-2">✅ Opción2</li>
-              <li className="flex items-center gap-2">✅ Opción3</li>
+              <motion.li whileHover={{ x: 5, scale: 1.02 }} className="flex items-center gap-2 text-sm">
+                ✅ Opción1
+              </motion.li>
+              <motion.li whileHover={{ x: 5, scale: 1.02 }} className="flex items-center gap-2 text-sm">
+                ✅ Opción2
+              </motion.li>
+              <motion.li whileHover={{ x: 5, scale: 1.02 }} className="flex items-center gap-2 text-sm">
+                ✅ Opción3
+              </motion.li>
             </ul>
           </div>
         </div>
@@ -49,16 +67,22 @@ function App() {
       id: 'emprendimiento',
       title: 'Emprendimiento',
       color: 'morado',
-      icon: '🚀',
+      logo: CEP,
       description: 'Convierte ideas en negocios',
       content: (
-        <div className="space-y-4">
-          <div className="p-4 bg-morado/10 rounded-xl">
-            <h4 className="font-bold text-morado mb-2">Cursos disponibles:</h4>
+        <div className="space-y-3">
+          <div className="p-4 bg-morado/10 rounded-xl border border-morado/20">
+            <h4 className="font-bold text-morado mb-3 text-lg">Opciones disponibles:</h4>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2">✅ Opción1</li>
-              <li className="flex items-center gap-2">✅ Opción2</li>
-              <li className="flex items-center gap-2">✅ Opción3</li>
+              <motion.li whileHover={{ x: 5, scale: 1.02 }} className="flex items-center gap-2 text-sm">
+                ✅ Opción1
+              </motion.li>
+              <motion.li whileHover={{ x: 5, scale: 1.02 }} className="flex items-center gap-2 text-sm">
+                ✅ Opción2
+              </motion.li>
+              <motion.li whileHover={{ x: 5, scale: 1.02 }} className="flex items-center gap-2 text-sm">
+                ✅ Opción3
+              </motion.li>
             </ul>
           </div>
         </div>
@@ -72,7 +96,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Navbar Animada */}
+      {/* Navbar Animada - LOGO MÁS GRANDE */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -82,9 +106,13 @@ function App() {
           <div className="flex justify-between items-center">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold bg-gradient-to-r from-morado to-celeste bg-clip-text text-transparent"
+              className="h-20 flex items-center"
             >
-              CINF
+              <img 
+                src={LogoCentro} 
+                alt="Centros Empresariales" 
+                className="h-full w-auto object-contain max-w-[220px] hover:scale-110 transition-transform duration-300"
+              />
             </motion.div>
 
             <div className="hidden md:flex space-x-8">
@@ -92,11 +120,14 @@ function App() {
                 <button
                   key={cat.id}
                   onClick={() => toggleCategory(cat.id)}
-                  className={`font-medium hover:scale-105 transition-transform ${
+                  className={`font-medium hover:scale-105 transition-transform px-4 py-2 rounded-lg ${
                     activeCategory === cat.id 
-                      ? cat.color === 'verde' ? 'text-verde' : 
-                        cat.color === 'celeste' ? 'text-celeste' : 'text-morado'
-                      : 'text-gray-700'
+                      ? cat.color === 'verde' 
+                        ? 'text-verde bg-verde/10' 
+                        : cat.color === 'celeste' 
+                          ? 'text-celeste bg-celeste/10' 
+                          : 'text-morado bg-morado/10'
+                      : 'text-gray-700 hover:bg-gray-100'
                   }`}
                 >
                   {cat.title}
@@ -105,7 +136,7 @@ function App() {
             </div>
 
             <button
-              className="md:hidden"
+              className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -114,8 +145,8 @@ function App() {
         </div>
       </motion.nav>
 
-      {/* Hero Section con Animaciones */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-16">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 pt-24">
         {/* Elementos flotantes animados */}
         <motion.div
           animate={{ y: [0, -20, 0], rotate: [0, 360, 0] }}
@@ -133,156 +164,174 @@ function App() {
           className="absolute top-1/2 left-1/2 w-32 h-32 bg-celeste/10 rounded-full blur-xl"
         />
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
+        <div className="relative z-10 text-center max-w-6xl mx-auto w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
 
-            {/* Frase Principal con efecto máquina de escribir */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
-            >
-              <span className="block text-gray-800">TU FUTURO</span>
-              <span className="bg-gradient-to-r from-verde via-celeste to-morado bg-clip-text text-transparent">
-                COMIENZA AQUÍ
-              </span>
-            </motion.h1>
 
-            {/* Subtítulo con animación de aparición */}
-            <motion.p
+            {/* Grid de 3 LOGOS - SIN TÍTULOS SUPERIORES */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 max-w-5xl mx-auto">
+              {categories.map((category, index) => (
+                <motion.div
+                  key={category.id}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3 + (index * 0.1), duration: 0.5 }}
+                  whileHover={{ 
+                    scale: 1.03,
+                    y: -5
+                  }}
+                  className="relative group flex flex-col items-center"
+                  onMouseEnter={() => setActiveCategory(category.id)}
+                  onMouseLeave={() => setActiveCategory(null)}
+                >
+                  {/* Contenedor del logo */}
+                  <div className="relative w-full flex flex-col items-center">
+                    {/* Logo grande */}
+                    <div className={`w-44 h-44 md:w-48 md:h-48 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${activeCategory === category.id 
+                      ? category.color === 'verde' 
+                        ? 'bg-gradient-to-br from-verde/20 to-verde/5 shadow-2xl shadow-verde/30' 
+                        : category.color === 'celeste'
+                          ? 'bg-gradient-to-br from-celeste/20 to-celeste/5 shadow-2xl shadow-celeste/30'
+                          : 'bg-gradient-to-br from-morado/20 to-morado/5 shadow-2xl shadow-morado/30'
+                      : 'bg-white/80 shadow-lg backdrop-blur-sm'
+                    }`}>
+                      <motion.img
+                        animate={activeCategory === category.id ? { 
+                          scale: [1, 1.08, 1]
+                        } : {}}
+                        transition={{ duration: 0.5 }}
+                        src={category.logo}
+                        alt={category.title}
+                        className="w-full h-full object-contain p-6"
+                      />
+                    </div>
+
+                    {/* Título debajo del logo */}
+                    <motion.h3
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 + (index * 0.1) }}
+                      className={`mt-5 text-2xl font-bold text-center ${category.color === 'verde' ? 'text-verde' :
+                        category.color === 'celeste' ? 'text-celeste' :
+                        'text-morado'
+                      }`}
+                    >
+                      {category.title}
+                    </motion.h3>
+
+                    {/* Descripción pequeña */}
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 + (index * 0.1) }}
+                      className="mt-2 text-gray-600 text-sm"
+                    >
+                      {category.description}
+                    </motion.p>
+                  </div>
+
+                  {/* Información que aparece al hacer hover */}
+                  <AnimatePresence>
+                    {activeCategory === category.id && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                        className="absolute top-full left-0 right-0 mt-4 z-20 px-2"
+                      >
+                        <div className="bg-white rounded-2xl shadow-2xl p-5 border border-gray-200">
+                          {category.content}
+                          
+                          {/* Botón de acción */}
+                          <motion.button
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className={`mt-4 w-full py-3 rounded-xl font-medium text-base ${category.color === 'verde' ? 'bg-verde text-white hover:bg-verde/90' :
+                              category.color === 'celeste' ? 'bg-celeste text-white hover:bg-celeste/90' :
+                              'bg-morado text-white hover:bg-morado/90'
+                            }`}
+                          >
+                            Más información
+                          </motion.button>
+                        </div>
+                        
+                        {/* Flecha decorativa */}
+                        <div className="w-4 h-4 bg-white transform rotate-45 absolute -top-2 left-1/2 -translate-x-1/2 border-l border-t border-gray-200"></div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Instrucción sutil */}
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl text-gray-600 mb-12"
+              transition={{ delay: 1 }}
+              className="mt-16 text-gray-500"
             >
-              Domina <span className="text-verde font-bold">Inglés</span>,{' '}
-              <span className="text-celeste font-bold">Computación</span> y{' '}
-              <span className="text-morado font-bold">Emprendimiento</span>
-            </motion.p>
-
-            {/* Flecha animada indicando scroll */}
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-              className="mt-20"
-            >
-              <div className="text-gray-400">Explora nuestras áreas</div>
-              <div className="text-2xl mt-2 text-gray-300">↓</div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Sección de Categorías con Animaciones */}
-      <section className="py-20 px-4">
+      {/* Sección para dispositivos móviles */}
+      <section className="py-16 px-4 md:hidden">
         <div className="container mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-3xl lg:text-4xl font-bold text-center mb-16 text-gray-800"
-          >
-            Descubre nuestras{' '}
-            <span className="bg-gradient-to-r from-verde to-celeste bg-clip-text text-transparent">
-              áreas de aprendizaje
-            </span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {categories.map((category, index) => (
+          <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">
+            Nuestras áreas
+          </h2>
+          
+          <div className="space-y-6">
+            {categories.map((category) => (
               <motion.div
                 key={category.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.6 }}
-                whileHover={{ 
-                  y: -10,
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
-                className="relative"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="bg-white rounded-xl shadow-lg p-5"
+                onClick={() => toggleCategory(category.id)}
               >
-                {/* Card Principal */}
-                <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-                  {/* Barra superior con gradiente */}
-                  <div className={`h-2 ${
-                    category.color === 'verde' ? 'bg-gradient-to-r from-verde to-verde/80' :
-                    category.color === 'celeste' ? 'bg-gradient-to-r from-celeste to-celeste/80' :
-                    'bg-gradient-to-r from-morado to-morado/80'
-                  }`}></div>
-                  
-                  <div className="p-8">
-                    {/* Icono animado */}
-                    <motion.div
-                      whileHover={{ scale: 1.2, rotate: 10 }}
-                      className={`text-5xl mb-6 ${
-                        category.color === 'verde' ? 'text-verde' :
-                        category.color === 'celeste' ? 'text-celeste' :
-                        'text-morado'
-                      }`}
-                    >
-                      {category.icon}
-                    </motion.div>
-                    
-                    {/* Título */}
-                    <h3 className={`text-2xl font-bold mb-3 ${
-                      category.color === 'verde' ? 'text-verde' :
-                      category.color === 'celeste' ? 'text-celeste' :
-                      'text-morado'
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-14 h-14 flex items-center justify-center">
+                    <div className={`w-full h-full rounded-full flex items-center justify-center p-3 ${
+                      category.color === 'verde' ? 'bg-verde/10' :
+                      category.color === 'celeste' ? 'bg-celeste/10' :
+                      'bg-morado/10'
                     }`}>
-                      {category.title}
-                    </h3>
-                    
-                    {/* Descripción */}
-                    <p className="text-gray-600 mb-6">
-                      {category.description}
-                    </p>
-                    
-                    {/* Botón para expandir */}
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => toggleCategory(category.id)}
-                      className={`w-full py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${
-                        category.color === 'verde' ? 'bg-verde/10 text-verde hover:bg-verde hover:text-white' :
-                        category.color === 'celeste' ? 'bg-celeste/10 text-celeste hover:bg-celeste hover:text-white' :
-                        'bg-morado/10 text-morado hover:bg-morado hover:text-white'
-                      }`}
-                    >
-                      {activeCategory === category.id ? 'Ocultar detalles' : 'Ver detalles'}
-                      {activeCategory === category.id ? <FiChevronUp /> : <FiChevronDown />}
-                    </motion.button>
-                    
-                    {/* Contenido expandible */}
-                    <AnimatePresence>
-                      {activeCategory === category.id && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="mt-6 overflow-hidden"
-                        >
-                          {category.content}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      <img
+                        src={category.logo}
+                        alt={category.title}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
                   </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-800">{category.title}</h3>
+                    <p className="text-gray-600 text-sm">{category.description}</p>
+                  </div>
+                  <button className="ml-2 p-1">
+                    {activeCategory === category.id ? <FiChevronUp size={20} /> : <FiChevronDown size={20} />}
+                  </button>
                 </div>
-
-                {/* Efecto de sombra al hover */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"
-                  style={{
-                    background: category.color === 'verde' 
-                      ? 'linear-gradient(135deg, #63ed12, transparent)' 
-                      : category.color === 'celeste'
-                      ? 'linear-gradient(135deg, #11acd3, transparent)'
-                      : 'linear-gradient(135deg, #5a2290, transparent)'
-                  }}
-                />
+                
+                <AnimatePresence>
+                  {activeCategory === category.id && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden"
+                    >
+                      {category.content}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             ))}
           </div>
@@ -290,9 +339,11 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
+      <footer className="bg-gray-900 text-white py-6">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-sm">© 2026 CINF - Prueba de diseño con animaciones</p>
+          <p className="text-sm">
+            © 2026 Centro Empresariales - Todos los derechos reservados
+          </p>
         </div>
       </footer>
     </div>
