@@ -133,7 +133,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col bg-gradient-to-b from-gray-50 to-white">
+    <div className="flex flex-col bg-gradient-to-b from-gray-50 to-white min-h-screen">
       {/* Navbar */}
       <motion.nav
         initial={{ y: -100 }}
@@ -144,12 +144,12 @@ function App() {
           <div className="flex justify-between items-center">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="h-14 flex items-center"
+              className="h-32 md:h-40 flex items-center"
             >
               <img 
                 src={LogoCentro} 
                 alt="Centros Empresariales" 
-                className="h-full w-auto object-contain max-w-[160px] hover:scale-110 transition-transform duration-300"
+                className="h-full w-auto object-contain max-w-[400px] md:max-w-[500px] hover:scale-110 transition-transform duration-300"
               />
             </motion.div>
 
@@ -251,7 +251,7 @@ function App() {
       </motion.nav>
 
       {/* Contenido principal */}
-      <main className="pt-20">
+      <main className="flex-grow pt-20">
         {/* Sección del Logo 8 - GRANDE Y DESTACADO */}
         <section className="py-2 md:py-4 bg-gradient-to-r from-gray-50/50 to-white/50">
           <div className="container mx-auto px-4">
@@ -271,7 +271,7 @@ function App() {
         </section>
 
         {/* Sección de Cursos */}
-        <section className="py-8 md:py-12 px-4">
+        <section className="py-8 md:py-12 pb-32 md:pb-48 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -322,15 +322,6 @@ function App() {
                           className="w-full h-full object-contain p-6"
                         />
                       </div>
-                      
-                      {/* Título del curso */}
-                      <h3 className={`mt-6 font-bold text-xl ${
-                        category.color === 'rosa' ? 'text-[#FE2577]' :
-                        category.color === 'celeste' ? 'text-celeste' :
-                        'text-[#00B65A]'
-                      }`}>
-                        {category.title}
-                      </h3>
                     </div>
 
                     {/* Información que aparece al hacer hover/tap */}
@@ -358,7 +349,7 @@ function App() {
                             damping: 30,
                             mass: 0.6
                           }}
-                          className="relative md:absolute md:top-full left-0 right-0 mt-6 z-40 px-2 w-full"
+                          className="relative left-0 right-0 mt-6 z-40 px-2 w-full"
                         >
                           <motion.div 
                             initial={{ opacity: 0, y: 10 }}
@@ -380,8 +371,6 @@ function App() {
                               Cerrar
                             </button>
                           </motion.div>
-                          
-                          <div className="hidden md:block w-4 h-4 bg-white transform rotate-45 absolute -top-2 left-1/2 -translate-x-1/2 border-l border-t border-gray-200"></div>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -423,11 +412,6 @@ function App() {
                         className="w-full h-full object-contain p-6"
                       />
                     </div>
-                    
-                    {/* Título especial */}
-                    <h3 className="mt-6 font-bold text-xl text-[#3A86FF]">
-                      {emprendeTech.title}
-                    </h3>
                   </div>
 
                   {/* Información que aparece al hacer hover/tap */}
@@ -455,7 +439,7 @@ function App() {
                           damping: 30,
                           mass: 0.6
                         }}
-                        className="relative md:absolute md:top-full left-0 right-0 mt-6 z-40 px-2 w-full"
+                        className="relative left-0 right-0 mt-6 z-40 px-2 w-full"
                       >
                         <motion.div 
                           initial={{ opacity: 0, y: 10 }}
@@ -477,8 +461,6 @@ function App() {
                             Cerrar
                           </button>
                         </motion.div>
-                        
-                        <div className="hidden md:block w-4 h-4 bg-white transform rotate-45 absolute -top-2 left-1/2 -translate-x-1/2 border-l border-t border-gray-200"></div>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -490,7 +472,7 @@ function App() {
       </main>
       
       {/* Footer - Siempre al fondo */}
-      <footer className="bg-gray-900 text-white py-6 w-full flex-shrink-0">
+      <footer className="bg-gray-900 text-white py-6 w-full mt-auto flex-shrink-0">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm">
             © 2026 Centro Empresariales - Todos los derechos reservados
@@ -518,6 +500,18 @@ function App() {
         
         html, body, #root {
           height: 100%;
+          min-height: 100%;
+        }
+        
+        body {
+          display: flex;
+          flex-direction: column;
+        }
+        
+        #root {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
         }
       `}</style>
     </div>
