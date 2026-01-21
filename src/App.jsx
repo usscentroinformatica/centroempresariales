@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiChevronDown, FiChevronUp, FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiExternalLink } from 'react-icons/fi';
 
 // Importa las imágenes
 import CEP from './assets/CEP.png';
 import CI from './assets/CI.png';
 import CIS from './assets/CIS.png';
 import LogoCentro from './assets/logo_centro_empresariales.png';
+import Logo8 from './assets/8.png';
+import Logo7 from './assets/7.png';
 
 function App() {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -87,12 +89,51 @@ function App() {
     }
   ];
 
+  const emprendeTech = {
+    id: 'emprende-tech',
+    title: 'Emprende Tech',
+    color: 'azul',
+    logo: Logo7,
+    content: (
+      <div className="space-y-4">
+        <div className="p-4 bg-[#3A86FF]/10 rounded-xl border border-[#3A86FF]/20">
+          <div className="space-y-3 text-sm text-gray-700">
+            <p className="leading-relaxed">
+              En esta aula virtual podrás ir subiendo las actividades de acuerdo con las distintas etapas de desarrollo del Challenge – 1G.
+            </p>
+            <p className="leading-relaxed">
+              Una vez que el tutor se registre, se le asignará un usuario y contraseña, y será el responsable de subir las evidencias en las fechas establecidas según nuestro cronograma.
+            </p>
+            <p className="leading-relaxed font-medium">
+              Sé parte de Emprende Tech USS: domina la tecnología, comunica en inglés y emprende con impacto 🚀
+            </p>
+            <div className="mt-4 pt-3 border-t border-gray-300/50">
+              <a 
+                href="https://ulearning.com.pe/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#3A86FF] text-white rounded-lg hover:bg-[#3A86FF]/90 transition-colors"
+              >
+                <FiExternalLink className="w-4 h-4" />
+                <span>Visitar LINK: https://ulearning.com.pe/</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  };
+
   const toggleCategory = (categoryId) => {
     setActiveCategory(activeCategory === categoryId ? null : categoryId);
   };
 
+  const handleFormularioClick = () => {
+    alert('Abrir formulario de contacto');
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="flex flex-col bg-gradient-to-b from-gray-50 to-white">
       {/* Navbar */}
       <motion.nav
         initial={{ y: -100 }}
@@ -112,23 +153,38 @@ function App() {
               />
             </motion.div>
 
-            <div className="hidden md:flex space-x-6 items-center">
+            <div className="hidden md:flex space-x-4 items-center">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleFormularioClick}
+                className="font-medium px-5 py-2.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                Formulario
+              </motion.button>
+
               {categories.map((cat) => (
-                <button
+                <motion.button
                   key={cat.id}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => toggleCategory(cat.id)}
-                  className={`font-medium hover:scale-105 transition-transform px-4 py-2 rounded-lg ${
+                  className={`font-medium px-5 py-2.5 rounded-lg text-white shadow-md hover:shadow-lg transition-all duration-300 ${
                     activeCategory === cat.id 
                       ? cat.color === 'rosa' 
-                        ? 'text-white bg-[#FE2577] shadow-md shadow-[#FE2577]/30' 
+                        ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
                         : cat.color === 'celeste' 
-                          ? 'text-white bg-celeste shadow-md shadow-celeste/30' 
-                          : 'text-white bg-[#00B65A] shadow-md shadow-[#00B65A]/30'
-                      : 'text-gray-700 hover:bg-gray-100'
+                          ? 'bg-celeste hover:bg-celeste/90' 
+                          : 'bg-[#00B65A] hover:bg-[#00B65A]/90'
+                      : cat.color === 'rosa' 
+                        ? 'bg-[#FE2577]/90 hover:bg-[#FE2577]' 
+                        : cat.color === 'celeste' 
+                          ? 'bg-celeste/90 hover:bg-celeste' 
+                          : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
                   }`}
                 >
                   {cat.title}
-                </button>
+                </motion.button>
               ))}
             </div>
 
@@ -141,7 +197,6 @@ function App() {
           </div>
         </div>
 
-        {/* Menú móvil */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
@@ -151,26 +206,42 @@ function App() {
               className="md:hidden bg-white border-t shadow-lg"
             >
               <div className="container mx-auto px-4 py-3">
-                <div className="flex flex-col space-y-2">
+                <div className="flex flex-col space-y-3">
+                  <motion.button
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => {
+                      handleFormularioClick();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="font-medium text-center px-4 py-3.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 transition-all shadow-md"
+                  >
+                    Formulario
+                  </motion.button>
+
                   {categories.map((cat) => (
-                    <button
+                    <motion.button
                       key={cat.id}
+                      whileTap={{ scale: 0.97 }}
                       onClick={() => {
                         toggleCategory(cat.id);
                         setMobileMenuOpen(false);
                       }}
-                      className={`font-medium text-left px-4 py-3 rounded-lg transition-all ${
+                      className={`font-medium text-center px-4 py-3.5 rounded-lg text-white transition-all shadow-md ${
                         activeCategory === cat.id 
                           ? cat.color === 'rosa' 
-                            ? 'text-white bg-[#FE2577]' 
+                            ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
                             : cat.color === 'celeste' 
-                              ? 'text-white bg-celeste' 
-                              : 'text-white bg-[#00B65A]'
-                          : 'text-gray-700 hover:bg-gray-100'
+                              ? 'bg-celeste hover:bg-celeste/90' 
+                              : 'bg-[#00B65A] hover:bg-[#00B65A]/90'
+                          : cat.color === 'rosa' 
+                            ? 'bg-[#FE2577]/90 hover:bg-[#FE2577]' 
+                            : cat.color === 'celeste' 
+                              ? 'bg-celeste/90 hover:bg-celeste' 
+                              : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
                       }`}
                     >
                       {cat.title}
-                    </button>
+                    </motion.button>
                   ))}
                 </div>
               </div>
@@ -179,79 +250,189 @@ function App() {
         </AnimatePresence>
       </motion.nav>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 pt-20">
-        {/* Elementos flotantes animados */}
-        <motion.div
-          animate={{ y: [0, -20, 0], rotate: [0, 360, 0] }}
-          transition={{ repeat: Infinity, duration: 8 }}
-          className="absolute top-20 left-10 w-40 h-40 bg-[#FE2577]/10 rounded-full blur-2xl"
-        />
-        <motion.div
-          animate={{ y: [0, 20, 0], rotate: [360, 0, 360] }}
-          transition={{ repeat: Infinity, duration: 10, delay: 1 }}
-          className="absolute bottom-20 right-10 w-60 h-60 bg-[#00B65A]/10 rounded-full blur-2xl"
-        />
-        <motion.div
-          animate={{ x: [-50, 50, -50], y: [0, 30, 0] }}
-          transition={{ repeat: Infinity, duration: 12 }}
-          className="absolute top-1/2 left-1/2 w-32 h-32 bg-celeste/10 rounded-full blur-xl"
-        />
+      {/* Contenido principal */}
+      <main className="pt-20">
+        {/* Sección del Logo 8 - GRANDE Y DESTACADO */}
+        <section className="py-2 md:py-4 bg-gradient-to-r from-gray-50/50 to-white/50">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex justify-center"
+            >
+              <img 
+                src={Logo8} 
+                alt="Logo principal" 
+                className="w-full max-w-5xl h-auto max-h-96 md:max-h-[650px] object-contain mx-auto"
+              />
+            </motion.div>
+          </div>
+        </section>
 
-        <div className="relative z-10 text-center max-w-6xl mx-auto w-full">
+        {/* Sección de Cursos */}
+        <section className="py-8 md:py-12 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            {/* Grid de 3 LOGOS */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 max-w-5xl mx-auto">
-              {categories.map((category, index) => (
+            <div className="container mx-auto">
+
+              {/* Grid de 4 LOGOS - 3 cursos + Emprende Tech */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 max-w-7xl mx-auto">
+                {/* Cursos principales - 3 columnas */}
+                {categories.map((category, index) => (
+                  <motion.div
+                    key={category.id}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5 + (index * 0.1), duration: 0.5 }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      y: -8
+                    }}
+                    className="relative group flex flex-col items-center"
+                    onMouseEnter={() => setActiveCategory(category.id)}
+                    onMouseLeave={() => setActiveCategory(null)}
+                    onClick={() => {
+                      if (window.innerWidth < 768) {
+                        toggleCategory(category.id);
+                      }
+                    }}
+                  >
+                    {/* Contenedor del logo */}
+                    <div className="relative w-full flex flex-col items-center">
+                      <div className={`w-40 h-40 md:w-48 md:h-48 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
+                        activeCategory === category.id 
+                          ? category.color === 'rosa' 
+                            ? 'bg-gradient-to-br from-[#FE2577]/20 to-[#FE2577]/5 shadow-2xl shadow-[#FE2577]/30 border-[#FE2577]/30' 
+                            : category.color === 'celeste'
+                              ? 'bg-gradient-to-br from-celeste/20 to-celeste/5 shadow-2xl shadow-celeste/30 border-celeste/30'
+                              : 'bg-gradient-to-br from-[#00B65A]/20 to-[#00B65A]/5 shadow-2xl shadow-[#00B65A]/30 border-[#00B65A]/30'
+                          : 'bg-white shadow-xl backdrop-blur-sm hover:shadow-2xl transition-all'
+                      }`}>
+                        <motion.img
+                          animate={activeCategory === category.id ? { 
+                            scale: [1, 1.1, 1]
+                          } : {}}
+                          transition={{ duration: 0.5 }}
+                          src={category.logo}
+                          alt={category.title}
+                          className="w-full h-full object-contain p-6"
+                        />
+                      </div>
+                      
+                      {/* Título del curso */}
+                      <h3 className={`mt-6 font-bold text-xl ${
+                        category.color === 'rosa' ? 'text-[#FE2577]' :
+                        category.color === 'celeste' ? 'text-celeste' :
+                        'text-[#00B65A]'
+                      }`}>
+                        {category.title}
+                      </h3>
+                    </div>
+
+                    {/* Información que aparece al hacer hover/tap */}
+                    <AnimatePresence>
+                      {activeCategory === category.id && (
+                        <motion.div
+                          initial={{ 
+                            opacity: 0, 
+                            y: 30,
+                            scale: 0.9
+                          }}
+                          animate={{ 
+                            opacity: 1, 
+                            y: 0,
+                            scale: 1
+                          }}
+                          exit={{ 
+                            opacity: 0, 
+                            y: -10,
+                            scale: 0.95
+                          }}
+                          transition={{ 
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 30,
+                            mass: 0.6
+                          }}
+                          className="relative md:absolute md:top-full left-0 right-0 mt-6 z-40 px-2 w-full"
+                        >
+                          <motion.div 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.15, duration: 0.4 }}
+                            className="bg-white rounded-2xl shadow-2xl p-5 border border-gray-200"
+                          >
+                            <div className="mb-5">
+                              {category.content}
+                            </div>
+
+                            <button
+                              className="mt-4 w-full py-2.5 rounded-lg font-medium text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 md:hidden border border-gray-300"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveCategory(null);
+                              }}
+                            >
+                              Cerrar
+                            </button>
+                          </motion.div>
+                          
+                          <div className="hidden md:block w-4 h-4 bg-white transform rotate-45 absolute -top-2 left-1/2 -translate-x-1/2 border-l border-t border-gray-200"></div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))}
+
+                {/* Emprende Tech - Columna especial a la derecha */}
                 <motion.div
-                  key={category.id}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3 + (index * 0.1), duration: 0.5 }}
+                  transition={{ delay: 0.8, duration: 0.5 }}
                   whileHover={{ 
-                    scale: 1.03,
-                    y: -5
+                    scale: 1.05,
+                    y: -8
                   }}
-                  className="relative group flex flex-col items-center mb-12 md:mb-0"
-                  onMouseEnter={() => setActiveCategory(category.id)}
+                  className="relative group flex flex-col items-center"
+                  onMouseEnter={() => setActiveCategory(emprendeTech.id)}
                   onMouseLeave={() => setActiveCategory(null)}
                   onClick={() => {
                     if (window.innerWidth < 768) {
-                      toggleCategory(category.id);
+                      toggleCategory(emprendeTech.id);
                     }
                   }}
                 >
                   {/* Contenedor del logo */}
                   <div className="relative w-full flex flex-col items-center">
-                    {/* Logo grande */}
-                    <div className={`w-36 h-36 md:w-48 md:h-48 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
-                      activeCategory === category.id 
-                        ? category.color === 'rosa' 
-                          ? 'bg-gradient-to-br from-[#FE2577]/20 to-[#FE2577]/5 shadow-2xl shadow-[#FE2577]/30 border-[#FE2577]/30' 
-                          : category.color === 'celeste'
-                            ? 'bg-gradient-to-br from-celeste/20 to-celeste/5 shadow-2xl shadow-celeste/30 border-celeste/30'
-                            : 'bg-gradient-to-br from-[#00B65A]/20 to-[#00B65A]/5 shadow-2xl shadow-[#00B65A]/30 border-[#00B65A]/30'
-                        : 'bg-white/80 shadow-lg backdrop-blur-sm hover:shadow-xl hover:scale-[1.02] transition-all'
+                    <div className={`w-40 h-40 md:w-48 md:h-48 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
+                      activeCategory === emprendeTech.id 
+                        ? 'bg-gradient-to-br from-[#3A86FF]/20 to-[#3A86FF]/5 shadow-2xl shadow-[#3A86FF]/30 border-[#3A86FF]/30' 
+                        : 'bg-white shadow-xl backdrop-blur-sm hover:shadow-2xl transition-all'
                     }`}>
                       <motion.img
-                        animate={activeCategory === category.id ? { 
-                          scale: [1, 1.08, 1]
+                        animate={activeCategory === emprendeTech.id ? { 
+                          scale: [1, 1.1, 1]
                         } : {}}
                         transition={{ duration: 0.5 }}
-                        src={category.logo}
-                        alt={category.title}
+                        src={emprendeTech.logo}
+                        alt={emprendeTech.title}
                         className="w-full h-full object-contain p-6"
                       />
                     </div>
+                    
+                    {/* Título especial */}
+                    <h3 className="mt-6 font-bold text-xl text-[#3A86FF]">
+                      {emprendeTech.title}
+                    </h3>
                   </div>
 
-                  {/* Información que aparece al hacer hover/tap - SOLUCIÓN SIMPLE */}
+                  {/* Información que aparece al hacer hover/tap */}
                   <AnimatePresence>
-                    {activeCategory === category.id && (
+                    {activeCategory === emprendeTech.id && (
                       <motion.div
                         initial={{ 
                           opacity: 0, 
@@ -274,40 +455,20 @@ function App() {
                           damping: 30,
                           mass: 0.6
                         }}
-                        className="relative md:absolute md:top-full left-0 right-0 mt-4 z-40 px-2 w-full"
+                        className="relative md:absolute md:top-full left-0 right-0 mt-6 z-40 px-2 w-full"
                       >
                         <motion.div 
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.15, duration: 0.4 }}
-                          className="bg-white rounded-2xl shadow-2xl p-4 border border-gray-200"
+                          className="bg-white rounded-2xl shadow-2xl p-5 border border-gray-200"
                         >
-                          {/* Contenido de opciones */}
-                          <div className="mb-4">
-                            {category.content}
+                          <div className="mb-5">
+                            {emprendeTech.content}
                           </div>
-                          
-                          {/* Botón Más información - CON MÁRGEN ADECUADO */}
-                          <motion.button
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
-                            className={`w-full py-3 rounded-xl font-medium text-base ${
-                              category.color === 'rosa' 
-                                ? 'bg-[#FE2577] text-white hover:bg-[#FE2577]/90 shadow-lg shadow-[#FE2577]/30' 
-                                : category.color === 'celeste' 
-                                  ? 'bg-celeste text-white hover:bg-celeste/90 shadow-lg shadow-celeste/30' 
-                                  : 'bg-[#00B65A] text-white hover:bg-[#00B65A]/90 shadow-lg shadow-[#00B65A]/30'
-                            }`}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                            }}
-                          >
-                            Más información
-                          </motion.button>
 
-                          {/* Botón Cerrar en móvil - CON MÁRGEN */}
                           <button
-                            className="mt-3 w-full py-2 rounded-lg font-medium text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 md:hidden border border-gray-300"
+                            className="mt-4 w-full py-2.5 rounded-lg font-medium text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 md:hidden border border-gray-300"
                             onClick={(e) => {
                               e.stopPropagation();
                               setActiveCategory(null);
@@ -317,20 +478,19 @@ function App() {
                           </button>
                         </motion.div>
                         
-                        {/* Flecha decorativa */}
                         <div className="hidden md:block w-4 h-4 bg-white transform rotate-45 absolute -top-2 left-1/2 -translate-x-1/2 border-l border-t border-gray-200"></div>
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </motion.div>
-              ))}
+              </div>
             </div>
           </motion.div>
-        </div>
-      </section>
+        </section>
+      </main>
       
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-6">
+      {/* Footer - Siempre al fondo */}
+      <footer className="bg-gray-900 text-white py-6 w-full flex-shrink-0">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm">
             © 2026 Centro Empresariales - Todos los derechos reservados
@@ -354,6 +514,10 @@ function App() {
         
         .border-celeste {
           border-color: var(--color-celeste);
+        }
+        
+        html, body, #root {
+          height: 100%;
         }
       `}</style>
     </div>
