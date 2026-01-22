@@ -7,7 +7,7 @@ import CEP from './assets/CEP.png';
 import CI from './assets/CI.png';
 import CIS from './assets/CIS.png';
 import LogoCentro from './assets/logo_centro_empresariales.png';
-import Logo8 from './assets/EMPRENDE TECH .png';
+import Logo8 from './assets/EMPRENDE_TECH.png';
 import Logo7 from './assets/7.png';
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
     },
     {
       id: 'computacion',
-      title: 'Computación',
+      title: 'Informática',
       color: 'celeste',
       logo: CIS,
       content: (
@@ -251,27 +251,27 @@ function App() {
       </motion.nav>
 
       {/* Contenido principal */}
-      <main className="flex-grow pt-20">
+      <main className="flex-grow pt-36 md:pt-44">
         {/* Sección del Logo Emprende Tech - GRANDE Y DESTACADO */}
-        <section className="pt-0 pb-0 bg-gradient-to-r from-gray-50/50 to-white/50">
-          <div className="container mx-auto px-4">
+        <section className="pt-6 md:pt-8 pb-0 bg-gradient-to-r from-gray-50/50 to-white/50 overflow-visible">
+          <div className="container mx-auto px-4 overflow-visible">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="flex justify-center"
+              className="flex justify-center overflow-visible"
             >
               <img 
                 src={Logo8} 
                 alt="Logo principal" 
-                className="w-full max-w-5xl h-auto max-h-96 md:max-h-[650px] object-contain mx-auto"
+                className="w-full max-w-3xl h-auto max-h-48 md:max-h-[350px] object-contain mx-auto mb-2 md:mb-4"
               />
             </motion.div>
           </div>
         </section>
 
         {/* Sección de Cursos */}
-        <section className="pt-0 pb-32 md:pb-48 px-4">
+        <section className="pt-2 md:pt-4 pb-32 md:pb-48 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
