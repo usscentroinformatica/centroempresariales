@@ -22,10 +22,10 @@ function App() {
   const categories = [
     {
       id: 'ingles',
-      title: 'Inglés',
+      title: '',
       color: 'rosa',
       logo: CI,
-      subtitle: 'Centro de Idiomas',
+      subtitle: '',
       content: (
         <div className="space-y-4">
           <div className="p-4 bg-[#FE2577]/10 rounded-xl border border-[#FE2577]/20">
