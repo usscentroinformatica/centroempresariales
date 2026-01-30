@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiExternalLink } from 'react-icons/fi';
+import { FiMenu, FiX, FiExternalLink, FiFileText, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
 // Importa las imágenes
 import CEP from './assets/CEP.png';
@@ -13,6 +13,65 @@ import Logo7 from './assets/7.png';
 function App() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [generalidadesOpen, setGeneralidadesOpen] = useState(false);
+  const [selectedDocument, setSelectedDocument] = useState(null);
+
+  // Datos para los documentos PDF
+  const documentos = [
+    {
+      id: 1,
+      titulo: 'Manual del Participante',
+      descripcion: 'Guía completa para participantes del programa',
+      url: '/documentos/manual-participante.pdf'
+    },
+    {
+      id: 2,
+      titulo: 'Reglamento Interno',
+      descripcion: 'Normas y reglas del centro empresarial',
+      url: '/documentos/reglamento-interno.pdf'
+    },
+    {
+      id: 3,
+      titulo: 'Cronograma de Actividades',
+      descripcion: 'Calendario de eventos y talleres',
+      url: '/documentos/cronograma-actividades.pdf'
+    },
+    {
+      id: 4,
+      titulo: 'Formatos de Inscripción',
+      descripcion: 'Documentos para registro de participantes',
+      url: '/documentos/formatos-inscripcion.pdf'
+    },
+    {
+      id: 5,
+      titulo: 'Guía de Buenas Prácticas',
+      descripcion: 'Recomendaciones para el éxito en el programa',
+      url: '/documentos/guias-buenas-practicas.pdf'
+    },
+    {
+      id: 6,
+      titulo: 'Información General del Programa',
+      descripcion: 'Detalles sobre objetivos y metodología',
+      url: '/documentos/informacion-programa.pdf'
+    }
+  ];
+
+  // Función para abrir PDF
+  const abrirPDF = (url, titulo) => {
+    setSelectedDocument({ url, titulo });
+    // En un entorno real, aquí podrías:
+    // 1. Abrir el PDF en una nueva pestaña
+    window.open(url, '_blank');
+    
+    // 2. O mostrar un visor de PDF integrado
+    // setMostrarVisorPDF(true);
+    
+    // 3. O descargar el archivo
+    // const link = document.createElement('a');
+    // link.href = url;
+    // link.download = titulo + '.pdf';
+    // link.click();
+  };
 
   const categories = [
     {
@@ -135,120 +194,258 @@ function App() {
   return (
     <div className="flex flex-col bg-gradient-to-b from-gray-50 to-white min-h-screen">
       {/* Navbar */}
-<motion.nav
-  initial={{ y: -100 }}
-  animate={{ y: 0 }}
-  className="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm"
->
-  <div className="container mx-auto px-4 py-2">
-    <div className="flex justify-between items-center">
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        className="h-24 md:h-32 flex items-center"
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm"
       >
-        <img 
-          src={LogoCentro} 
-          alt="Centros Empresariales" 
-          className="h-full w-auto object-contain max-w-[300px] md:max-w-[400px] hover:scale-110 transition-transform duration-300"
-        />
-      </motion.div>
-
-      <div className="hidden md:flex space-x-4 items-center">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleFormularioClick}
-          className="font-medium px-5 py-2.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 shadow-md hover:shadow-lg transition-all duration-300"
-        >
-          Formulario
-        </motion.button>
-
-        {categories.map((cat) => (
-          <motion.button
-            key={cat.id}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => toggleCategory(cat.id)}
-            className={`font-medium px-5 py-2.5 rounded-lg text-white shadow-md hover:shadow-lg transition-all duration-300 ${
-              activeCategory === cat.id 
-                ? cat.color === 'rosa' 
-                  ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
-                  : cat.color === 'celeste' 
-                    ? 'bg-celeste hover:bg-celeste/90' 
-                    : 'bg-[#00B65A] hover:bg-[#00B65A]/90'
-                : cat.color === 'rosa' 
-                  ? 'bg-[#FE2577]/90 hover:bg-[#FE2577]' 
-                  : cat.color === 'celeste' 
-                    ? 'bg-celeste/90 hover:bg-celeste' 
-                    : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
-            }`}
-          >
-            {cat.title}
-          </motion.button>
-        ))}
-      </div>
-
-      <button
-        className="md:hidden p-2 hover:bg-gray-100 rounded-lg z-50"
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-      >
-        {mobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
-      </button>
-    </div>
-  </div>
-
-  <AnimatePresence>
-    {mobileMenuOpen && (
-      <motion.div
-        initial={{ opacity: 0, height: 0 }}
-        animate={{ opacity: 1, height: 'auto' }}
-        exit={{ opacity: 0, height: 0 }}
-        className="md:hidden bg-white border-t shadow-lg"
-      >
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex flex-col space-y-3">
-            <motion.button
-              whileTap={{ scale: 0.97 }}
-              onClick={() => {
-                handleFormularioClick();
-                setMobileMenuOpen(false);
-              }}
-              className="font-medium text-center px-4 py-3.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 transition-all shadow-md"
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex justify-between items-center">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="h-24 md:h-32 flex items-center"
             >
-              Formulario
-            </motion.button>
+              <img 
+                src={LogoCentro} 
+                alt="Centros Empresariales" 
+                className="h-full w-auto object-contain max-w-[300px] md:max-w-[400px] hover:scale-110 transition-transform duration-300"
+              />
+            </motion.div>
 
-            {categories.map((cat) => (
+            <div className="hidden md:flex space-x-4 items-center">
               <motion.button
-                key={cat.id}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => {
-                  toggleCategory(cat.id);
-                  setMobileMenuOpen(false);
-                }}
-                className={`font-medium text-center px-4 py-3.5 rounded-lg text-white transition-all shadow-md ${
-                  activeCategory === cat.id 
-                    ? cat.color === 'rosa' 
-                      ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
-                      : cat.color === 'celeste' 
-                        ? 'bg-celeste hover:bg-celeste/90' 
-                        : 'bg-[#00B65A] hover:bg-[#00B65A]/90'
-                    : cat.color === 'rosa' 
-                      ? 'bg-[#FE2577]/90 hover:bg-[#FE2577]' 
-                      : cat.color === 'celeste' 
-                        ? 'bg-celeste/90 hover:bg-celeste' 
-                        : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
-                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleFormularioClick}
+                className="font-medium px-5 py-2.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 shadow-md hover:shadow-lg transition-all duration-300"
               >
-                {cat.title}
+                Formulario
               </motion.button>
-            ))}
+
+              {categories.map((cat) => (
+                <motion.button
+                  key={cat.id}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => toggleCategory(cat.id)}
+                  className={`font-medium px-5 py-2.5 rounded-lg text-white shadow-md hover:shadow-lg transition-all duration-300 ${
+                    activeCategory === cat.id 
+                      ? cat.color === 'rosa' 
+                        ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
+                        : cat.color === 'celeste' 
+                          ? 'bg-celeste hover:bg-celeste/90' 
+                          : 'bg-[#00B65A] hover:bg-[#00B65A]/90'
+                      : cat.color === 'rosa' 
+                        ? 'bg-[#FE2577]/90 hover:bg-[#FE2577]' 
+                        : cat.color === 'celeste' 
+                          ? 'bg-celeste/90 hover:bg-celeste' 
+                          : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
+                  }`}
+                >
+                  {cat.title}
+                </motion.button>
+              ))}
+            </div>
+
+            <button
+              className="md:hidden p-2 hover:bg-gray-100 rounded-lg z-50"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+            </button>
           </div>
         </div>
-      </motion.div>
-    )}
-  </AnimatePresence>
-</motion.nav>
+
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white border-t shadow-lg"
+            >
+              <div className="container mx-auto px-4 py-3">
+                <div className="flex flex-col space-y-3">
+                  <motion.button
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => {
+                      handleFormularioClick();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="font-medium text-center px-4 py-3.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 transition-all shadow-md"
+                  >
+                    Formulario
+                  </motion.button>
+
+                  {categories.map((cat) => (
+                    <motion.button
+                      key={cat.id}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => {
+                        toggleCategory(cat.id);
+                        setMobileMenuOpen(false);
+                      }}
+                      className={`font-medium text-center px-4 py-3.5 rounded-lg text-white transition-all shadow-md ${
+                        activeCategory === cat.id 
+                          ? cat.color === 'rosa' 
+                            ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
+                            : cat.color === 'celeste' 
+                              ? 'bg-celeste hover:bg-celeste/90' 
+                              : 'bg-[#00B65A] hover:bg-[#00B65A]/90'
+                          : cat.color === 'rosa' 
+                            ? 'bg-[#FE2577]/90 hover:bg-[#FE2577]' 
+                            : cat.color === 'celeste' 
+                              ? 'bg-celeste/90 hover:bg-celeste' 
+                              : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
+                      }`}
+                    >
+                      {cat.title}
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+
+      {/* Botón Generalidades - Posición fija en esquina inferior izquierda */}
+      <div className="fixed bottom-6 left-6 z-40">
+        <motion.div
+          initial={{ x: -50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="relative"
+        >
+          {/* Botón principal */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setGeneralidadesOpen(!generalidadesOpen)}
+            className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
+          >
+            <FiFileText className="w-5 h-5" />
+            <span>Generalidades</span>
+            {generalidadesOpen ? (
+              <FiChevronUp className="w-4 h-4" />
+            ) : (
+              <FiChevronDown className="w-4 h-4" />
+            )}
+          </motion.button>
+
+          {/* Menú desplegable */}
+          <AnimatePresence>
+            {generalidadesOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                transition={{ type: "spring", damping: 25 }}
+                className="absolute bottom-full left-0 mb-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden"
+              >
+                <div className="p-3 bg-gradient-to-r from-[#012c65] to-[#1e4a8a]">
+                  <h3 className="text-white font-semibold text-sm">Documentos Disponibles</h3>
+                  <p className="text-white/80 text-xs mt-1">Haz clic para abrir o descargar</p>
+                </div>
+                
+                <div className="max-h-80 overflow-y-auto">
+                  {documentos.map((doc) => (
+                    <motion.button
+                      key={doc.id}
+                      whileHover={{ x: 5 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => abrirPDF(doc.url, doc.titulo)}
+                      className="w-full text-left px-4 py-3 hover:bg-gray-50 border-b border-gray-100 last:border-b-0 transition-colors group"
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
+                          <FiFileText className="w-4 h-4 text-[#012c65]" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-medium text-gray-800 text-sm group-hover:text-[#012c65] transition-colors">
+                            {doc.titulo}
+                          </h4>
+                          <p className="text-gray-500 text-xs mt-1 line-clamp-2">
+                            {doc.descripcion}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.button>
+                  ))}
+                </div>
+
+                <div className="p-3 bg-gray-50 border-t border-gray-200">
+                  <p className="text-gray-500 text-xs text-center">
+                    Total: {documentos.length} documentos
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+
+      {/* Visor de PDF (opcional - puedes implementarlo después) */}
+      <AnimatePresence>
+        {selectedDocument && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedDocument(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-4 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] text-white flex justify-between items-center">
+                <h3 className="font-semibold">{selectedDocument.titulo}</h3>
+                <button
+                  onClick={() => setSelectedDocument(null)}
+                  className="p-2 hover:bg-white/20 rounded-lg transition-colors"
+                >
+                  <FiX size={20} />
+                </button>
+              </div>
+              <div className="p-4 h-[70vh]">
+                <div className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center bg-gray-50">
+                  <FiFileText className="w-16 h-16 text-gray-400 mb-4" />
+                  <p className="text-gray-600 font-medium">Vista previa del PDF</p>
+                  <p className="text-gray-500 text-sm mt-2">{selectedDocument.titulo}</p>
+                  <div className="mt-6 flex gap-3">
+                    <a
+                      href={selectedDocument.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-[#012c65] text-white rounded-lg hover:bg-[#012c65]/90 transition-colors"
+                    >
+                      Abrir en nueva pestaña
+                    </a>
+                    <button
+                      onClick={() => {
+                        // Simular descarga
+                        const link = document.createElement('a');
+                        link.href = selectedDocument.url;
+                        link.download = selectedDocument.titulo + '.pdf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                      }}
+                      className="px-4 py-2 border border-[#012c65] text-[#012c65] rounded-lg hover:bg-[#012c65]/10 transition-colors"
+                    >
+                      Descargar PDF
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Contenido principal */}
       <main className="flex-grow pt-36 md:pt-44">
@@ -512,6 +709,13 @@ function App() {
           display: flex;
           flex-direction: column;
           flex: 1;
+        }
+
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
       `}</style>
     </div>
