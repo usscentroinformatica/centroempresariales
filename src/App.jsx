@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiExternalLink, FiFileText, FiChevronRight, FiAward, FiGlobe, FiCode, FiUsers, FiTarget } from 'react-icons/fi';
+import { FiMenu, FiX, FiExternalLink, FiFileText, FiChevronRight, FiAward, FiGlobe, FiCode, FiUsers } from 'react-icons/fi';
 
 // Importa las imágenes
 import CEP from './assets/CEP.png';
@@ -9,7 +9,6 @@ import CIS from './assets/CIS.png';
 import LogoCentro from './assets/logo_centro_empresariales.png';
 import Logo8 from './assets/EMPRENDE_TECH.png';
 import Logo7 from './assets/7.png';
-// Necesitarás agregar un logo para el challenge, puedes usar uno existente o crear uno nuevo
 
 function App() {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -279,17 +278,20 @@ function App() {
                 className="w-full max-w-3xl h-auto max-h-48 md:max-h-[350px] object-contain mx-auto mb-2 md:mb-4"
               />
               
-              {/* Texto DESAFIO GENERAL centrado */}
+              {/* Texto DESAFÍO DEL CHALLENGE - 1G centrado */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-center"
               >
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
-                  DESAFÍO GENERAL
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight mb-4">
+                  DESAFÍO DEL CHALLENGE - 1G
                 </h2>
-                <div className="mt-2 h-1 w-24 md:w-32 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] mx-auto rounded-full"></div>
+                <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed px-4">
+                  Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
+                </p>
+                <div className="mt-4 h-1 w-24 md:w-32 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] mx-auto rounded-full"></div>
               </motion.div>
             </motion.div>
           </div>
@@ -546,7 +548,7 @@ function App() {
                       </div>
                       <div>
                         <h2 className="text-2xl font-bold text-white">Generalidades del Challenge</h2>
-                        <p className="text-white/80 text-sm">Información completa del desafío</p>
+                        <p className="text-white/80 text-sm">Información completa del programa</p>
                       </div>
                     </div>
                     <button
@@ -569,20 +571,42 @@ function App() {
                         className="h-16 md:h-20 w-auto"
                       />
                     </div>
-                    <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent mb-2">
-                      DESAFÍO DEL CHALLENGE - 1G
+                    <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent mb-4">
+                      Programa Emprende Tech
                     </h1>
                     <div className="h-1 w-32 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] mx-auto rounded-full mb-6"></div>
                   </div>
 
-                  {/* Descripción Principal */}
+                  {/* Información General */}
                   <div className="mb-8">
                     <div className="bg-gradient-to-r from-[#012c65]/5 to-[#1e4a8a]/5 p-6 rounded-xl border border-[#012c65]/20">
-                      <p className="text-lg text-gray-700 leading-relaxed text-center">
-                        Desarrollar una solución tecnológica innovadora que resuelva un problema real, 
-                        con una propuesta de valor clara, comunicada en inglés y defendida en español 
-                        ante un jurado.
-                      </p>
+                      <h3 className="font-bold text-gray-800 mb-4 text-lg">Objetivos del Programa:</h3>
+                      <ul className="space-y-3">
+                        <li className="flex items-start gap-3">
+                          <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
+                            <FiChevronRight className="w-4 h-4" />
+                          </div>
+                          <span className="text-gray-700">Desarrollar competencias tecnológicas aplicadas</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
+                            <FiChevronRight className="w-4 h-4" />
+                          </div>
+                          <span className="text-gray-700">Fomentar el emprendimiento con base tecnológica</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
+                            <FiChevronRight className="w-4 h-4" />
+                          </div>
+                          <span className="text-gray-700">Potenciar la comunicación en inglés en contextos profesionales</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
+                            <FiChevronRight className="w-4 h-4" />
+                          </div>
+                          <span className="text-gray-700">Crear soluciones innovadoras a problemas reales</span>
+                        </li>
+                      </ul>
                     </div>
                   </div>
 
@@ -594,9 +618,9 @@ function App() {
                           <FiTarget className="w-6 h-6 text-blue-600" />
                         </div>
                         <div>
-                          <h3 className="font-bold text-blue-700 mb-2">Propósito Principal</h3>
+                          <h3 className="font-bold text-blue-700 mb-2">Metodología</h3>
                           <p className="text-sm text-gray-600">
-                            Innovación tecnológica aplicada a problemas reales con impacto social
+                            Aprendizaje basado en proyectos y desafíos reales
                           </p>
                         </div>
                       </div>
@@ -608,9 +632,9 @@ function App() {
                           <FiGlobe className="w-6 h-6 text-green-600" />
                         </div>
                         <div>
-                          <h3 className="font-bold text-green-700 mb-2">Comunicación Bilingüe</h3>
+                          <h3 className="font-bold text-green-700 mb-2">Acompañamiento</h3>
                           <p className="text-sm text-gray-600">
-                            Presentación en inglés y defensa en español ante jurado especializado
+                            Tutorías personalizadas y mentoría especializada
                           </p>
                         </div>
                       </div>
@@ -622,9 +646,9 @@ function App() {
                           <FiCode className="w-6 h-6 text-purple-600" />
                         </div>
                         <div>
-                          <h3 className="font-bold text-purple-700 mb-2">Desarrollo Tecnológico</h3>
+                          <h3 className="font-bold text-purple-700 mb-2">Recursos</h3>
                           <p className="text-sm text-gray-600">
-                            Soluciones digitales innovadoras con propuesta de valor clara
+                            Plataforma virtual y herramientas tecnológicas
                           </p>
                         </div>
                       </div>
@@ -636,53 +660,13 @@ function App() {
                           <FiUsers className="w-6 h-6 text-amber-600" />
                         </div>
                         <div>
-                          <h3 className="font-bold text-amber-700 mb-2">Trabajo en Equipo</h3>
+                          <h3 className="font-bold text-amber-700 mb-2">Networking</h3>
                           <p className="text-sm text-gray-600">
-                            Colaboración multidisciplinaria para resultados óptimos
+                            Conexión con profesionales y emprendedores
                           </p>
                         </div>
                       </div>
                     </div>
-                  </div>
-
-                  {/* Requisitos */}
-                  <div className="bg-gray-50 rounded-xl p-6 mb-8">
-                    <h3 className="font-bold text-gray-800 mb-4 text-lg flex items-center gap-2">
-                      <FiChevronRight className="text-[#012c65]" />
-                      Requisitos del Challenge
-                    </h3>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3">
-                        <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
-                          <FiChevronRight className="w-4 h-4" />
-                        </div>
-                        <span className="text-gray-700">Innovación tecnológica aplicable a problemas reales</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
-                          <FiChevronRight className="w-4 h-4" />
-                        </div>
-                        <span className="text-gray-700">Propuesta de valor clara y diferenciada</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
-                          <FiChevronRight className="w-4 h-4" />
-                        </div>
-                        <span className="text-gray-700">Comunicación efectiva en inglés</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
-                          <FiChevronRight className="w-4 h-4" />
-                        </div>
-                        <span className="text-gray-700">Defensa del proyecto en español</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
-                          <FiChevronRight className="w-4 h-4" />
-                        </div>
-                        <span className="text-gray-700">Presentación ante jurado especializado</span>
-                      </li>
-                    </ul>
                   </div>
 
                   {/* Botón de Registro */}
@@ -696,10 +680,10 @@ function App() {
                       }}
                       className="px-8 py-3 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
                     >
-                      Participar en el Challenge
+                      Registrarse en el Programa
                     </motion.button>
                     <p className="text-sm text-gray-500 mt-3">
-                      No pierdas la oportunidad de desarrollar tu proyecto innovador
+                      Únete a nuestra comunidad de innovadores y emprendedores tecnológicos
                     </p>
                   </div>
                 </div>
@@ -747,11 +731,6 @@ function App() {
           main {
             padding-bottom: 80px;
           }
-        }
-
-        /* Estilos para el modal */
-        .modal-content {
-          max-height: calc(90vh - 100px);
         }
       `}</style>
     </div>
