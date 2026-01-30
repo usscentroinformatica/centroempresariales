@@ -135,120 +135,120 @@ function App() {
   return (
     <div className="flex flex-col bg-gradient-to-b from-gray-50 to-white min-h-screen">
       {/* Navbar */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm"
+<motion.nav
+  initial={{ y: -100 }}
+  animate={{ y: 0 }}
+  className="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm"
+>
+  <div className="container mx-auto px-4 py-2">
+    <div className="flex justify-between items-center">
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        className="h-24 md:h-32 flex items-center"
       >
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex justify-between items-center">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="h-32 md:h-40 flex items-center"
-            >
-              <img 
-                src={LogoCentro} 
-                alt="Centros Empresariales" 
-                className="h-full w-auto object-contain max-w-[400px] md:max-w-[500px] hover:scale-110 transition-transform duration-300"
-              />
-            </motion.div>
+        <img 
+          src={LogoCentro} 
+          alt="Centros Empresariales" 
+          className="h-full w-auto object-contain max-w-[300px] md:max-w-[400px] hover:scale-110 transition-transform duration-300"
+        />
+      </motion.div>
 
-            <div className="hidden md:flex space-x-4 items-center">
+      <div className="hidden md:flex space-x-4 items-center">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleFormularioClick}
+          className="font-medium px-5 py-2.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 shadow-md hover:shadow-lg transition-all duration-300"
+        >
+          Formulario
+        </motion.button>
+
+        {categories.map((cat) => (
+          <motion.button
+            key={cat.id}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => toggleCategory(cat.id)}
+            className={`font-medium px-5 py-2.5 rounded-lg text-white shadow-md hover:shadow-lg transition-all duration-300 ${
+              activeCategory === cat.id 
+                ? cat.color === 'rosa' 
+                  ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
+                  : cat.color === 'celeste' 
+                    ? 'bg-celeste hover:bg-celeste/90' 
+                    : 'bg-[#00B65A] hover:bg-[#00B65A]/90'
+                : cat.color === 'rosa' 
+                  ? 'bg-[#FE2577]/90 hover:bg-[#FE2577]' 
+                  : cat.color === 'celeste' 
+                    ? 'bg-celeste/90 hover:bg-celeste' 
+                    : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
+            }`}
+          >
+            {cat.title}
+          </motion.button>
+        ))}
+      </div>
+
+      <button
+        className="md:hidden p-2 hover:bg-gray-100 rounded-lg z-50"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+      >
+        {mobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+      </button>
+    </div>
+  </div>
+
+  <AnimatePresence>
+    {mobileMenuOpen && (
+      <motion.div
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ opacity: 1, height: 'auto' }}
+        exit={{ opacity: 0, height: 0 }}
+        className="md:hidden bg-white border-t shadow-lg"
+      >
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex flex-col space-y-3">
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              onClick={() => {
+                handleFormularioClick();
+                setMobileMenuOpen(false);
+              }}
+              className="font-medium text-center px-4 py-3.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 transition-all shadow-md"
+            >
+              Formulario
+            </motion.button>
+
+            {categories.map((cat) => (
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleFormularioClick}
-                className="font-medium px-5 py-2.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 shadow-md hover:shadow-lg transition-all duration-300"
+                key={cat.id}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => {
+                  toggleCategory(cat.id);
+                  setMobileMenuOpen(false);
+                }}
+                className={`font-medium text-center px-4 py-3.5 rounded-lg text-white transition-all shadow-md ${
+                  activeCategory === cat.id 
+                    ? cat.color === 'rosa' 
+                      ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
+                      : cat.color === 'celeste' 
+                        ? 'bg-celeste hover:bg-celeste/90' 
+                        : 'bg-[#00B65A] hover:bg-[#00B65A]/90'
+                    : cat.color === 'rosa' 
+                      ? 'bg-[#FE2577]/90 hover:bg-[#FE2577]' 
+                      : cat.color === 'celeste' 
+                        ? 'bg-celeste/90 hover:bg-celeste' 
+                        : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
+                }`}
               >
-                Formulario
+                {cat.title}
               </motion.button>
-
-              {categories.map((cat) => (
-                <motion.button
-                  key={cat.id}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => toggleCategory(cat.id)}
-                  className={`font-medium px-5 py-2.5 rounded-lg text-white shadow-md hover:shadow-lg transition-all duration-300 ${
-                    activeCategory === cat.id 
-                      ? cat.color === 'rosa' 
-                        ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
-                        : cat.color === 'celeste' 
-                          ? 'bg-celeste hover:bg-celeste/90' 
-                          : 'bg-[#00B65A] hover:bg-[#00B65A]/90'
-                      : cat.color === 'rosa' 
-                        ? 'bg-[#FE2577]/90 hover:bg-[#FE2577]' 
-                        : cat.color === 'celeste' 
-                          ? 'bg-celeste/90 hover:bg-celeste' 
-                          : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
-                  }`}
-                >
-                  {cat.title}
-                </motion.button>
-              ))}
-            </div>
-
-            <button
-              className="md:hidden p-2 hover:bg-gray-100 rounded-lg z-50"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
-            </button>
+            ))}
           </div>
         </div>
-
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t shadow-lg"
-            >
-              <div className="container mx-auto px-4 py-3">
-                <div className="flex flex-col space-y-3">
-                  <motion.button
-                    whileTap={{ scale: 0.97 }}
-                    onClick={() => {
-                      handleFormularioClick();
-                      setMobileMenuOpen(false);
-                    }}
-                    className="font-medium text-center px-4 py-3.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 transition-all shadow-md"
-                  >
-                    Formulario
-                  </motion.button>
-
-                  {categories.map((cat) => (
-                    <motion.button
-                      key={cat.id}
-                      whileTap={{ scale: 0.97 }}
-                      onClick={() => {
-                        toggleCategory(cat.id);
-                        setMobileMenuOpen(false);
-                      }}
-                      className={`font-medium text-center px-4 py-3.5 rounded-lg text-white transition-all shadow-md ${
-                        activeCategory === cat.id 
-                          ? cat.color === 'rosa' 
-                            ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
-                            : cat.color === 'celeste' 
-                              ? 'bg-celeste hover:bg-celeste/90' 
-                              : 'bg-[#00B65A] hover:bg-[#00B65A]/90'
-                          : cat.color === 'rosa' 
-                            ? 'bg-[#FE2577]/90 hover:bg-[#FE2577]' 
-                            : cat.color === 'celeste' 
-                              ? 'bg-celeste/90 hover:bg-celeste' 
-                              : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
-                      }`}
-                    >
-                      {cat.title}
-                    </motion.button>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</motion.nav>
 
       {/* Contenido principal */}
       <main className="flex-grow pt-36 md:pt-44">
