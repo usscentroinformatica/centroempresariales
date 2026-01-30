@@ -143,7 +143,7 @@ function App() {
 
   return (
     <div className="flex flex-col bg-gradient-to-b from-gray-50 to-white min-h-screen">
-      {/* Navbar - Mantengo el código original del navbar aquí */}
+      {/* Navbar */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -259,26 +259,9 @@ function App() {
         </AnimatePresence>
       </motion.nav>
 
-      {/* Botón Generalidades SIMPLE */}
-      <motion.div
-        initial={{ x: -50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="fixed bottom-6 left-6 z-40"
-      >
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleGeneralidadesClick}
-          className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
-        >
-          <FiFileText className="w-5 h-5" />
-          <span>Generalidades</span>
-        </motion.button>
-      </motion.div>
-
-      {/* Contenido principal - Mantengo todo el contenido original */}
-      <main className="flex-grow pt-36 md:pt-44">
+      {/* Contenido principal */}
+      <main className="flex-grow pt-36 md:pt-44 relative">
+        {/* Sección del Logo Emprende Tech */}
         <section className="pt-6 md:pt-8 pb-0 bg-gradient-to-r from-gray-50/50 to-white/50 overflow-visible">
           <div className="container mx-auto px-4 overflow-visible">
             <motion.div
@@ -296,7 +279,8 @@ function App() {
           </div>
         </section>
 
-        <section className="pt-2 md:pt-4 pb-32 md:pb-48 px-4">
+        {/* Sección de Cursos */}
+        <section className="pt-2 md:pt-4 pb-16 md:pb-32 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -486,8 +470,25 @@ function App() {
             </div>
           </motion.div>
         </section>
+
+        {/* Botón Generalidades - POSICIÓN FIJADA RESPONSIVE */}
+        <div className="fixed bottom-6 md:bottom-8 left-4 md:left-6 z-40">
+          <motion.button
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleGeneralidadesClick}
+            className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium text-sm md:text-base"
+          >
+            <FiFileText className="w-4 h-4 md:w-5 md:h-5" />
+            <span>Generalidades</span>
+          </motion.button>
+        </div>
       </main>
       
+      {/* Footer con más espacio */}
       <footer className="bg-gray-900 text-white py-6 w-full mt-auto flex-shrink-0">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm">
@@ -527,6 +528,13 @@ function App() {
           display: flex;
           flex-direction: column;
           flex: 1;
+        }
+
+        /* Asegurar que el botón no se sobreponga en móviles */
+        @media (max-width: 768px) {
+          main {
+            padding-bottom: 80px; /* Espacio para el botón en móviles */
+          }
         }
       `}</style>
     </div>
