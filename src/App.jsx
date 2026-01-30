@@ -17,6 +17,9 @@ function App() {
   // URL directa del PDF - Cambia esta URL por la de tu PDF
   const pdfUrl = 'https://ejemplo.com/documento.pdf';
 
+  // URL del formulario de registro
+  const registroUrl = 'https://forms.gle/FdNnMwMAvLhMJ8sf6';
+
   const categories = [
     {
       id: 'ingles',
@@ -131,8 +134,9 @@ function App() {
     setActiveCategory(activeCategory === categoryId ? null : categoryId);
   };
 
-  const handleFormularioClick = () => {
-    alert('Abrir formulario de contacto');
+  // Función para abrir el formulario de registro
+  const handleRegistroClick = () => {
+    window.open(registroUrl, '_blank', 'noopener,noreferrer');
   };
 
   // Función para abrir el PDF en nueva pestaña
@@ -166,10 +170,10 @@ function App() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={handleFormularioClick}
+                onClick={handleRegistroClick}
                 className="font-medium px-5 py-2.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 shadow-md hover:shadow-lg transition-all duration-300"
               >
-                Formulario
+                Registro
               </motion.button>
 
               {categories.map((cat) => (
@@ -219,12 +223,12 @@ function App() {
                   <motion.button
                     whileTap={{ scale: 0.97 }}
                     onClick={() => {
-                      handleFormularioClick();
+                      handleRegistroClick();
                       setMobileMenuOpen(false);
                     }}
                     className="font-medium text-center px-4 py-3.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 transition-all shadow-md"
                   >
-                    Formulario
+                    Registro
                   </motion.button>
 
                   {categories.map((cat) => (
@@ -268,19 +272,33 @@ function App() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="flex justify-center overflow-visible"
+              className="flex flex-col items-center justify-center overflow-visible"
             >
+              {/* Logo EMPRENDE_TECH */}
               <img 
                 src={Logo8} 
                 alt="Logo principal" 
                 className="w-full max-w-3xl h-auto max-h-48 md:max-h-[350px] object-contain mx-auto mb-2 md:mb-4"
               />
+              
+              {/* Texto DESAFIO GENERAL centrado */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-center"
+              >
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
+                  DESAFÍO GENERAL
+                </h2>
+                <div className="mt-2 h-1 w-24 md:w-32 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] mx-auto rounded-full"></div>
+              </motion.div>
             </motion.div>
           </div>
         </section>
 
         {/* Sección de Cursos */}
-        <section className="pt-2 md:pt-4 pb-16 md:pb-32 px-4">
+        <section className="pt-8 md:pt-12 pb-16 md:pb-32 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
