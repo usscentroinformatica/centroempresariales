@@ -317,54 +317,54 @@ function App() {
           </div>
         </section>
 
-        {/* Sección DESAFÍO con Logo, Título y Texto - ALINEADO CON BOTONES */}
+        {/* Sección DESAFÍO con Logo, Título y Texto - MISMA ALTURA Y DISTRIBUCIÓN QUE BOTONES */}
         <section className="py-8 md:py-10 px-4">
           <div className="container mx-auto">
             <div className="max-w-7xl mx-auto">
-              {/* Misma estructura que la grid de botones pero en una fila */}
-              <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 md:gap-10">
-                {/* Logo Logito - MISMO TAMAÑO que logos de botones */}
+              {/* Misma grid que los botones pero en una sola fila */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
+                {/* Logo Logito - TAMAÑO REDUCIDO SIN FONDO */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
-                  className="flex-shrink-0"
+                  className="md:col-span-3 flex justify-center"
                 >
-                  <div className="w-40 h-40 md:w-48 md:h-48 rounded-3xl flex items-center justify-center bg-gradient-to-br from-[#012c65]/10 to-[#1e4a8a]/5 border-2 border-gray-300 shadow-xl">
+                  <div className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 flex items-center justify-center">
                     <img 
                       src={Logito} 
                       alt="Desafío" 
-                      className="w-full h-full object-contain p-8"
+                      className="w-full h-full object-contain"
                     />
                   </div>
                 </motion.div>
 
-                {/* Contenedor de Título y Texto - ALINEADO CON EL LOGO */}
+                {/* Título DESAFÍO - CENTRADO VERTICALMENTE */}
                 <motion.div
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  className="flex-1"
+                  className="md:col-span-3 flex justify-center md:justify-start"
                 >
-                  <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 h-full min-h-[160px] md:min-h-[192px]">
-                    {/* Título DESAFÍO - ALINEADO VERTICALMENTE CON EL LOGO */}
-                    <div className="md:w-1/4 flex-shrink-0 flex items-center">
-                      <div>
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
-                          DESAFÍO
-                        </h2>
-                        <div className="mt-2 h-1 w-20 md:w-24 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full"></div>
-                      </div>
-                    </div>
+                  <div className="text-center md:text-left">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
+                      DESAFÍO
+                    </h2>
+                    <div className="mt-2 h-1 w-20 md:w-24 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full mx-auto md:mx-0"></div>
+                  </div>
+                </motion.div>
 
-                    {/* Texto descriptivo - MISMA ALTURA QUE EL LOGO */}
-                    <div className="md:w-3/4 flex items-center">
-                      <div className="bg-gradient-to-r from-gray-50 to-gray-100/50 p-5 md:p-6 rounded-xl border border-gray-300/50 w-full">
-                        <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                          Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
-                        </p>
-                      </div>
-                    </div>
+                {/* Texto descriptivo - MISMA ALTURA QUE LOS DEMÁS */}
+                <motion.div
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  className="md:col-span-6 flex items-center"
+                >
+                  <div className="w-full h-full flex items-center">
+                    <p className="text-sm md:text-base text-gray-700 leading-relaxed text-center md:text-left">
+                      Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
+                    </p>
                   </div>
                 </motion.div>
               </div>
@@ -377,7 +377,7 @@ function App() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
           >
             <div className="container mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 max-w-7xl mx-auto">
@@ -386,7 +386,7 @@ function App() {
                     key={category.id}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.7 + (index * 0.1), duration: 0.5 }}
+                    transition={{ delay: 0.8 + (index * 0.1), duration: 0.5 }}
                     whileHover={{ 
                       scale: 1.05,
                       y: -8
@@ -478,7 +478,7 @@ function App() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.0, duration: 0.5 }}
+                  transition={{ delay: 1.1, duration: 0.5 }}
                   whileHover={{ 
                     scale: 1.05,
                     y: -8
@@ -571,7 +571,7 @@ function App() {
             <motion.button
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1.2 }}
+              transition={{ delay: 1.3 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleGeneralidades}
