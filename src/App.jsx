@@ -106,7 +106,7 @@ function App() {
           <div className="space-y-4">
             <div className="text-center">
               <a 
-                href="https://ulearning.com.pe/" 
+                href="https://aula.ulearning.pe/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#3A86FF] text-white rounded-lg hover:bg-[#3A86FF]/90 transition-colors font-medium w-full"
