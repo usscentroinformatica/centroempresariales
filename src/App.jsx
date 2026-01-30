@@ -25,6 +25,7 @@ function App() {
       title: 'Inglés',
       color: 'rosa',
       logo: CI,
+      subtitle: 'Centro de Idiomas',
       content: (
         <div className="space-y-4">
           <div className="p-4 bg-[#FE2577]/10 rounded-xl border border-[#FE2577]/20">
@@ -49,6 +50,7 @@ function App() {
       title: 'Informática',
       color: 'celeste',
       logo: CIS,
+      subtitle: 'Centro de Informática',
       content: (
         <div className="space-y-4">
           <div className="p-4 bg-celeste/10 rounded-xl border border-celeste/20">
@@ -73,6 +75,7 @@ function App() {
       title: 'Emprendimiento',
       color: 'verde',
       logo: CEP,
+      subtitle: 'Empresarialmente y Producción',
       content: (
         <div className="space-y-4">
           <div className="p-4 bg-[#00B65A]/10 rounded-xl border border-[#00B65A]/20">
@@ -99,6 +102,7 @@ function App() {
     title: 'Emprende Tech',
     color: 'azul',
     logo: Logo7,
+    subtitle: 'U-LEARNING',
     content: (
       <div className="space-y-4">
         <div className="p-4 bg-[#3A86FF]/10 rounded-xl border border-[#3A86FF]/20">
@@ -317,20 +321,21 @@ function App() {
           </div>
         </section>
 
-        {/* Sección DESAFÍO con Logo, Título y Texto - AJUSTADO */}
+        {/* Sección DESAFÍO con Logo, Título y Texto - CORREGIDO */}
         <section className="py-4 md:py-6 px-4">
           <div className="container mx-auto">
             <div className="max-w-7xl mx-auto">
-              {/* Grid más compacta */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-center">
-                {/* Logo Logito - MÁS PEQUEÑO */}
+              {/* Grid con 4 columnas iguales */}
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 md:gap-6 items-center">
+                
+                {/* Logo Logito - Columna 1 */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
-                  className="md:col-span-2 flex justify-center"
+                  className="sm:col-span-1 flex justify-center items-center"
                 >
-                  <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center">
                     <img 
                       src={Logito} 
                       alt="Desafío" 
@@ -339,12 +344,12 @@ function App() {
                   </div>
                 </motion.div>
 
-                {/* Título DESAFÍO - MÁS CERCA DEL LOGO */}
+                {/* Título DESAFÍO - Columna 2 */}
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  className="md:col-span-2 flex justify-center md:justify-start"
+                  className="sm:col-span-1 flex justify-center md:justify-start items-center"
                 >
                   <div className="text-center md:text-left">
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
@@ -354,12 +359,12 @@ function App() {
                   </div>
                 </motion.div>
 
-                {/* Texto descriptivo - MÁS CERCA */}
+                {/* Texto descriptivo - Columnas 3 y 4 (col-span-2) */}
                 <motion.div
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
-                  className="md:col-span-8 flex items-center"
+                  className="sm:col-span-2 flex items-center"
                 >
                   <div className="w-full">
                     <p className="text-xs md:text-sm text-gray-700 leading-relaxed text-center md:text-left">
@@ -372,7 +377,7 @@ function App() {
           </div>
         </section>
 
-        {/* Sección de Cursos - EMPIEZA JUSTO DESPUÉS */}
+        {/* Sección de Cursos - CON 4 COLUMNAS IGUALES */}
         <section className="pt-2 pb-16 md:pb-32 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -380,7 +385,8 @@ function App() {
             transition={{ duration: 0.8, delay: 0.7 }}
           >
             <div className="container mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
+              {/* Grid de 4 columnas con responsividad */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
                 {categories.map((category, index) => (
                   <motion.div
                     key={category.id}
@@ -401,7 +407,7 @@ function App() {
                     }}
                   >
                     <div className="relative w-full flex flex-col items-center">
-                      <div className={`w-36 h-36 md:w-40 md:h-40 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
+                      <div className={`w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
                         activeCategory === category.id 
                           ? category.color === 'rosa' 
                             ? 'bg-gradient-to-br from-[#FE2577]/20 to-[#FE2577]/5 shadow-2xl shadow-[#FE2577]/30 border-[#FE2577]/30' 
@@ -417,9 +423,19 @@ function App() {
                           transition={{ duration: 0.5 }}
                           src={category.logo}
                           alt={category.title}
-                          className="w-full h-full object-contain p-5"
+                          className="w-full h-full object-contain p-4 md:p-5"
                         />
                       </div>
+                    </div>
+
+                    {/* Título debajo del logo */}
+                    <div className="mt-3 text-center w-full px-2">
+                      <h3 className="font-semibold text-sm md:text-base text-gray-800">
+                        {category.title}
+                      </h3>
+                      <p className="text-xs text-gray-600 mt-1 min-h-[2.5rem]">
+                        {category.subtitle}
+                      </p>
                     </div>
 
                     <AnimatePresence>
@@ -446,7 +462,7 @@ function App() {
                             damping: 30,
                             mass: 0.6
                           }}
-                          className="relative left-0 right-0 mt-4 z-40 px-2 w-full"
+                          className="absolute top-full left-0 right-0 mt-4 z-40 px-2 w-full"
                         >
                           <motion.div 
                             initial={{ opacity: 0, y: 10 }}
@@ -474,7 +490,7 @@ function App() {
                   </motion.div>
                 ))}
 
-                {/* Logo 7.png - Aula Virtual */}
+                {/* Logo 7.png - Aula Virtual - Columna 4 */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -493,7 +509,7 @@ function App() {
                   }}
                 >
                   <div className="relative w-full flex flex-col items-center">
-                    <div className={`w-36 h-36 md:w-40 md:h-40 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
+                    <div className={`w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
                       activeCategory === emprendeTech.id 
                         ? 'bg-gradient-to-br from-[#3A86FF]/20 to-[#3A86FF]/5 shadow-2xl shadow-[#3A86FF]/30 border-[#3A86FF]/30' 
                         : 'bg-white shadow-xl backdrop-blur-sm hover:shadow-2xl transition-all'
@@ -505,9 +521,19 @@ function App() {
                         transition={{ duration: 0.5 }}
                         src={emprendeTech.logo}
                         alt={emprendeTech.title}
-                        className="w-full h-full object-contain p-5"
+                        className="w-full h-full object-contain p-4 md:p-5"
                       />
                     </div>
+                  </div>
+
+                  {/* Título debajo del logo */}
+                  <div className="mt-3 text-center w-full px-2">
+                    <h3 className="font-semibold text-sm md:text-base text-gray-800">
+                      {emprendeTech.title}
+                    </h3>
+                    <p className="text-xs text-gray-600 mt-1 min-h-[2.5rem]">
+                      {emprendeTech.subtitle}
+                    </p>
                   </div>
 
                   <AnimatePresence>
@@ -534,7 +560,7 @@ function App() {
                           damping: 30,
                           mass: 0.6
                         }}
-                        className="relative left-0 right-0 mt-4 z-40 px-2 w-full"
+                        className="absolute top-full left-0 right-0 mt-4 z-40 px-2 w-full"
                       >
                         <motion.div 
                           initial={{ opacity: 0, y: 10 }}
@@ -686,6 +712,35 @@ function App() {
           
           .fixed.bottom-6 {
             bottom: 80px;
+          }
+
+          /* En móviles, la sección DESAFÍO se muestra en columnas */
+          section.py-4.md\\:py-6.px-4 .grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+          }
+
+          section.py-4.md\\:py-6.px-4 .sm\\:col-span-1,
+          section.py-4.md\\:py-6.px-4 .sm\\:col-span-2 {
+            width: 100%;
+          }
+
+          /* Centrar todo en móviles */
+          section.py-4.md\\:py-6.px-4 .text-center.md\\:text-left {
+            text-align: center;
+          }
+
+          section.py-4.md\\:py-6.px-4 .mx-auto.md\\:mx-0 {
+            margin-left: auto;
+            margin-right: auto;
+          }
+        }
+
+        /* Para tablets medianas (sm) */
+        @media (min-width: 640px) and (max-width: 767px) {
+          section.py-4.md\\:py-6.px-4 .grid {
+            grid-template-columns: repeat(4, 1fr);
           }
         }
       `}</style>
