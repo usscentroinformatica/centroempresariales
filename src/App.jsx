@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiExternalLink, FiFileText, FiChevronRight, FiAward, FiGlobe, FiCode, FiUsers } from 'react-icons/fi';
+import { FiMenu, FiX, FiExternalLink, FiFileText, FiChevronRight, FiDownload, FiCalendar, FiInfo } from 'react-icons/fi';
 
 // Importa las imágenes
 import CEP from './assets/CEP.png';
@@ -101,27 +101,105 @@ function App() {
     content: (
       <div className="space-y-4">
         <div className="p-4 bg-[#3A86FF]/10 rounded-xl border border-[#3A86FF]/20">
-          <div className="space-y-3 text-sm text-gray-700">
-            <p className="leading-relaxed">
-              En esta aula virtual podrás ir subiendo las actividades de acuerdo con las distintas etapas de desarrollo del Challenge – 1G.
-            </p>
-            <p className="leading-relaxed">
-              Una vez que el tutor se registre, se le asignará un usuario y contraseña, y será el responsable de subir las evidencias en las fechas establecidas según nuestro cronograma.
-            </p>
-            <p className="leading-relaxed font-medium">
-              Sé parte de Emprende Tech USS: domina la tecnología, comunica en inglés y emprende con impacto 🚀
-            </p>
-            <div className="mt-4 pt-3 border-t border-gray-300/50">
+          <h4 className="font-bold text-[#3A86FF] mb-4 text-lg text-center">Aula Virtual</h4>
+          <div className="space-y-4">
+            <div className="text-center">
+              <p className="text-sm text-gray-600 mb-4">
+                Accede al aula virtual para gestionar tus actividades
+              </p>
+            </div>
+            <div className="text-center">
               <a 
                 href="https://ulearning.com.pe/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-[#3A86FF] text-white rounded-lg hover:bg-[#3A86FF]/90 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#3A86FF] text-white rounded-lg hover:bg-[#3A86FF]/90 transition-colors font-medium w-full"
               >
-                <FiExternalLink className="w-4 h-4" />
-                <span>Visitar LINK: https://ulearning.com.pe/</span>
+                <FiExternalLink className="w-5 h-5" />
+                <span>Ir al Aula Virtual</span>
               </a>
+              <p className="text-xs text-gray-500 mt-2 text-center">
+                https://ulearning.com.pe/
+              </p>
             </div>
+          </div>
+        </div>
+      </div>
+    )
+  };
+
+  // Opciones para Generalidades
+  const generalidadesOptions = {
+    id: 'generalidades',
+    title: 'Generalidades',
+    color: 'azul-oscuro',
+    logo: null,
+    content: (
+      <div className="space-y-4">
+        <div className="p-4 bg-[#012c65]/10 rounded-xl border border-[#012c65]/20">
+          <h4 className="font-bold text-[#012c65] mb-4 text-lg">Opciones disponibles:</h4>
+          <ul className="space-y-3">
+            <li className="flex items-center justify-between gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50 group">
+              <div className="flex items-center gap-3">
+                <div className="bg-[#012c65] text-white p-2 rounded-lg">
+                  <FiDownload className="w-4 h-4" />
+                </div>
+                <span className="font-medium text-gray-700">Documento de Bases</span>
+              </div>
+              <FiChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#012c65]" />
+            </li>
+            
+            <li className="flex items-center justify-between gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50 group">
+              <div className="flex items-center gap-3">
+                <div className="bg-[#012c65] text-white p-2 rounded-lg">
+                  <FiCalendar className="w-4 h-4" />
+                </div>
+                <span className="font-medium text-gray-700">Cronograma de Actividades</span>
+              </div>
+              <FiChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#012c65]" />
+            </li>
+            
+            <li className="flex items-center justify-between gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50 group">
+              <div className="flex items-center gap-3">
+                <div className="bg-[#012c65] text-white p-2 rounded-lg">
+                  <FiInfo className="w-4 h-4" />
+                </div>
+                <span className="font-medium text-gray-700">Información del Jurado</span>
+              </div>
+              <FiChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#012c65]" />
+            </li>
+            
+            <li className="flex items-center justify-between gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50 group">
+              <div className="flex items-center gap-3">
+                <div className="bg-[#012c65] text-white p-2 rounded-lg">
+                  <FiFileText className="w-4 h-4" />
+                </div>
+                <span className="font-medium text-gray-700">Formatos y Plantillas</span>
+              </div>
+              <FiChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#012c65]" />
+            </li>
+            
+            <li className="flex items-center justify-between gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50 group">
+              <div className="flex items-center gap-3">
+                <div className="bg-[#012c65] text-white p-2 rounded-lg">
+                  <FiExternalLink className="w-4 h-4" />
+                </div>
+                <span className="font-medium text-gray-700">Recursos Adicionales</span>
+              </div>
+              <FiChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#012c65]" />
+            </li>
+          </ul>
+          
+          <div className="mt-6 pt-4 border-t border-gray-300/50 text-center">
+            <p className="text-sm text-gray-600 mb-3">
+              Selecciona una opción para ver más detalles
+            </p>
+            <button
+              onClick={() => setGeneralidadesOpen(false)}
+              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+            >
+              Cerrar opciones
+            </button>
           </div>
         </div>
       </div>
@@ -132,14 +210,17 @@ function App() {
     setActiveCategory(activeCategory === categoryId ? null : categoryId);
   };
 
+  const toggleGeneralidades = () => {
+    setGeneralidadesOpen(!generalidadesOpen);
+    // Si se abre generalidades, cerramos cualquier otra categoría activa
+    if (!generalidadesOpen) {
+      setActiveCategory(null);
+    }
+  };
+
   // Función para abrir el formulario de registro
   const handleRegistroClick = () => {
     window.open(registroUrl, '_blank', 'noopener,noreferrer');
-  };
-
-  // Función para abrir el modal de Generalidades
-  const handleGeneralidadesClick = () => {
-    setGeneralidadesOpen(true);
   };
 
   return (
@@ -253,6 +334,18 @@ function App() {
                       {cat.title}
                     </motion.button>
                   ))}
+                  
+                  {/* Botón Generalidades en menú móvil */}
+                  <motion.button
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => {
+                      toggleGeneralidades();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="font-medium text-center px-4 py-3.5 rounded-lg text-white bg-[#012c65]/90 hover:bg-[#012c65] transition-all shadow-md"
+                  >
+                    Generalidades
+                  </motion.button>
                 </div>
               </div>
             </motion.div>
@@ -399,6 +492,7 @@ function App() {
                   </motion.div>
                 ))}
 
+                {/* Logo 7.png - Aula Virtual */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -489,20 +583,67 @@ function App() {
           </motion.div>
         </section>
 
-        {/* Botón Generalidades - POSICIÓN FIJADA RESPONSIVE */}
+        {/* Botón Generalidades con submenú - POSICIÓN FIJADA RESPONSIVE */}
         <div className="fixed bottom-6 md:bottom-8 left-4 md:left-6 z-40">
-          <motion.button
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={handleGeneralidadesClick}
-            className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium text-sm md:text-base"
-          >
-            <FiFileText className="w-4 h-4 md:w-5 md:h-5" />
-            <span>Generalidades</span>
-          </motion.button>
+          <div className="relative">
+            <motion.button
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleGeneralidades}
+              className={`flex items-center gap-2 px-4 py-3 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium text-sm md:text-base ${
+                generalidadesOpen 
+                  ? 'bg-gradient-to-r from-[#1e4a8a] to-[#012c65]' 
+                  : 'bg-gradient-to-r from-[#012c65] to-[#1e4a8a]'
+              }`}
+            >
+              <FiFileText className="w-4 h-4 md:w-5 md:h-5" />
+              <span>Generalidades</span>
+            </motion.button>
+
+            {/* Submenú de Generalidades */}
+            <AnimatePresence>
+              {generalidadesOpen && (
+                <motion.div
+                  initial={{ 
+                    opacity: 0, 
+                    y: 20,
+                    scale: 0.95
+                  }}
+                  animate={{ 
+                    opacity: 1, 
+                    y: 0,
+                    scale: 1
+                  }}
+                  exit={{ 
+                    opacity: 0, 
+                    y: 10,
+                    scale: 0.95
+                  }}
+                  transition={{ 
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 30,
+                    mass: 0.6
+                  }}
+                  className="absolute bottom-full left-0 mb-4 z-50 min-w-[280px] md:min-w-[320px]"
+                >
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1, duration: 0.3 }}
+                    className="bg-white rounded-2xl shadow-2xl p-5 border border-gray-200"
+                  >
+                    <div className="mb-5">
+                      {generalidadesOptions.content}
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </main>
       
@@ -510,188 +651,10 @@ function App() {
       <footer className="bg-gray-900 text-white py-6 w-full mt-auto flex-shrink-0">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm">
-            © 2026 Centro Empresariales - Todos los derechos reservados
+            © 2026 Centros Empresariales - Todos los derechos reservados
           </p>
         </div>
       </footer>
-
-      {/* Modal de Generalidades */}
-      <AnimatePresence>
-        {generalidadesOpen && (
-          <>
-            {/* Overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setGeneralidadesOpen(false)}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
-            />
-            
-            {/* Modal */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            >
-              <div 
-                className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Header del Modal */}
-                <div className="sticky top-0 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] p-6 rounded-t-2xl">
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-4">
-                      <div className="bg-white/20 p-3 rounded-xl">
-                        <FiAward className="w-8 h-8 text-white" />
-                      </div>
-                      <div>
-                        <h2 className="text-2xl font-bold text-white">Generalidades del Challenge</h2>
-                        <p className="text-white/80 text-sm">Información completa del programa</p>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => setGeneralidadesOpen(false)}
-                      className="text-white/80 hover:text-white p-2 hover:bg-white/10 rounded-lg"
-                    >
-                      <FiX className="w-6 h-6" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Contenido del Modal */}
-                <div className="p-6 md:p-8">
-                  {/* Logo y Título Principal */}
-                  <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-[#012c65]/10 to-[#1e4a8a]/5 rounded-2xl mb-4">
-                      <img 
-                        src={Logo8} 
-                        alt="Emprende Tech" 
-                        className="h-16 md:h-20 w-auto"
-                      />
-                    </div>
-                    <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent mb-4">
-                      Programa Emprende Tech
-                    </h1>
-                    <div className="h-1 w-32 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] mx-auto rounded-full mb-6"></div>
-                  </div>
-
-                  {/* Información General */}
-                  <div className="mb-8">
-                    <div className="bg-gradient-to-r from-[#012c65]/5 to-[#1e4a8a]/5 p-6 rounded-xl border border-[#012c65]/20">
-                      <h3 className="font-bold text-gray-800 mb-4 text-lg">Objetivos del Programa:</h3>
-                      <ul className="space-y-3">
-                        <li className="flex items-start gap-3">
-                          <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
-                            <FiChevronRight className="w-4 h-4" />
-                          </div>
-                          <span className="text-gray-700">Desarrollar competencias tecnológicas aplicadas</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
-                            <FiChevronRight className="w-4 h-4" />
-                          </div>
-                          <span className="text-gray-700">Fomentar el emprendimiento con base tecnológica</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
-                            <FiChevronRight className="w-4 h-4" />
-                          </div>
-                          <span className="text-gray-700">Potenciar la comunicación en inglés en contextos profesionales</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <div className="bg-[#012c65] text-white p-1 rounded-full mt-1">
-                            <FiChevronRight className="w-4 h-4" />
-                          </div>
-                          <span className="text-gray-700">Crear soluciones innovadoras a problemas reales</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Características Principales */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-xl border border-blue-100">
-                      <div className="flex items-start gap-3">
-                        <div className="bg-blue-100 p-3 rounded-lg">
-                          <FiTarget className="w-6 h-6 text-blue-600" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-blue-700 mb-2">Metodología</h3>
-                          <p className="text-sm text-gray-600">
-                            Aprendizaje basado en proyectos y desafíos reales
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-5 rounded-xl border border-green-100">
-                      <div className="flex items-start gap-3">
-                        <div className="bg-green-100 p-3 rounded-lg">
-                          <FiGlobe className="w-6 h-6 text-green-600" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-green-700 mb-2">Acompañamiento</h3>
-                          <p className="text-sm text-gray-600">
-                            Tutorías personalizadas y mentoría especializada
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-5 rounded-xl border border-purple-100">
-                      <div className="flex items-start gap-3">
-                        <div className="bg-purple-100 p-3 rounded-lg">
-                          <FiCode className="w-6 h-6 text-purple-600" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-purple-700 mb-2">Recursos</h3>
-                          <p className="text-sm text-gray-600">
-                            Plataforma virtual y herramientas tecnológicas
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-5 rounded-xl border border-amber-100">
-                      <div className="flex items-start gap-3">
-                        <div className="bg-amber-100 p-3 rounded-lg">
-                          <FiUsers className="w-6 h-6 text-amber-600" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-amber-700 mb-2">Networking</h3>
-                          <p className="text-sm text-gray-600">
-                            Conexión con profesionales y emprendedores
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Botón de Registro */}
-                  <div className="text-center pt-4 border-t border-gray-200">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => {
-                        handleRegistroClick();
-                        setGeneralidadesOpen(false);
-                      }}
-                      className="px-8 py-3 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      Registrarse en el Programa
-                    </motion.button>
-                    <p className="text-sm text-gray-500 mt-3">
-                      Únete a nuestra comunidad de innovadores y emprendedores tecnológicos
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
 
       <style jsx global>{`
         :root {
@@ -730,6 +693,10 @@ function App() {
         @media (max-width: 768px) {
           main {
             padding-bottom: 80px;
+          }
+          
+          .fixed.bottom-6 {
+            bottom: 80px;
           }
         }
       `}</style>
