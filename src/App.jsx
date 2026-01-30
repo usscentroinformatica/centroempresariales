@@ -118,9 +118,6 @@ function App() {
                 <FiExternalLink className="w-5 h-5" />
                 <span>Ir al Aula Virtual</span>
               </a>
-              <p className="text-xs text-gray-500 mt-2 text-center">
-                https://ulearning.com.pe/
-              </p>
             </div>
           </div>
         </div>
