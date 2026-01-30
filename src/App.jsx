@@ -9,14 +9,13 @@ import CIS from './assets/CIS.png';
 import LogoCentro from './assets/logo_centro_empresariales.png';
 import Logo8 from './assets/EMPRENDE_TECH.png';
 import Logo7 from './assets/7.png';
-import Logito from './assets/logito.png'; // Asegúrate de tener este archivo
+import Logito from './assets/logito.png';
 
 function App() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [generalidadesOpen, setGeneralidadesOpen] = useState(false);
 
-  // URL del formulario de registro
   const registroUrl = 'https://forms.gle/FdNnMwMAvLhMJ8sf6';
 
   const categories = [
@@ -121,7 +120,6 @@ function App() {
     )
   };
 
-  // Opciones para Generalidades
   const generalidadesOptions = {
     id: 'generalidades',
     title: 'Generalidades',
@@ -135,11 +133,9 @@ function App() {
             <li className="flex items-center gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50">
               ✅ Opción1
             </li>
-            
             <li className="flex items-center gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50">
               ✅ Opción2
             </li>
-            
             <li className="flex items-center gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50">
               ✅ Opción3
             </li>
@@ -155,20 +151,18 @@ function App() {
 
   const toggleGeneralidades = () => {
     setGeneralidadesOpen(!generalidadesOpen);
-    // Si se abre generalidades, cerramos cualquier otra categoría activa
     if (!generalidadesOpen) {
       setActiveCategory(null);
     }
   };
 
-  // Función para abrir el formulario de registro
   const handleRegistroClick = () => {
     window.open(registroUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div className="flex flex-col bg-gradient-to-b from-gray-50 to-white min-h-screen">
-      {/* Navbar - REDUCIDO en altura */}
+      {/* Navbar */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -271,14 +265,13 @@ function App() {
                             ? 'bg-[#FE2577]/90 hover:bg-[#FE2577]' 
                             : cat.color === 'celeste' 
                               ? 'bg-celeste/90 hover:bg-celeste' 
-                              : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
+                            : 'bg-[#00B65A]/90 hover:bg-[#00B65A]'
                       }`}
                     >
                       {cat.title}
                     </motion.button>
                   ))}
                   
-                  {/* Botón Generalidades en menú móvil */}
                   <motion.button
                     whileTap={{ scale: 0.97 }}
                     onClick={() => {
@@ -298,7 +291,7 @@ function App() {
 
       {/* Contenido principal */}
       <main className="flex-grow pt-28 md:pt-36 relative">
-        {/* Sección del Logo Emprende Tech */}
+        {/* Logo Emprende Tech */}
         <section className="pt-6 md:pt-8 pb-0 bg-gradient-to-r from-gray-50/50 to-white/50 overflow-visible">
           <div className="container mx-auto px-4 overflow-visible">
             <motion.div
@@ -307,7 +300,6 @@ function App() {
               transition={{ duration: 0.8 }}
               className="flex flex-col items-center justify-center overflow-visible"
             >
-              {/* Logo EMPRENDE_TECH */}
               <img 
                 src={Logo8} 
                 alt="Logo principal" 
@@ -317,62 +309,70 @@ function App() {
           </div>
         </section>
 
-        {/* Sección DESAFÍO con Logo, Título y Texto - AJUSTADO */}
-        <section className="py-4 md:py-6 px-4">
+        {/* Sección DESAFÍO - NUEVO DISEÑO COMPACTO */}
+        <section className="py-3 md:py-4 px-4">
           <div className="container mx-auto">
-            <div className="max-w-7xl mx-auto">
-              {/* Grid más compacta */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-center">
-                {/* Logo Logito - MÁS PEQUEÑO */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                  className="md:col-span-2 flex justify-center"
-                >
-                  <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center">
-                    <img 
-                      src={Logito} 
-                      alt="Desafío" 
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="max-w-7xl mx-auto"
+            >
+              {/* Contenedor principal compacto */}
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 p-5 md:p-6">
+                <div className="flex flex-col md:flex-row items-center gap-5 md:gap-6">
+                  
+                  {/* Logo pequeño */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4, duration: 0.5 }}
+                    className="flex-shrink-0"
+                  >
+                    <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-gradient-to-br from-[#012c65]/10 to-[#1e4a8a]/5 rounded-2xl p-3 border border-[#012c65]/20">
+                      <img 
+                        src={Logito} 
+                        alt="Desafío" 
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  </motion.div>
 
-                {/* Título DESAFÍO - MÁS CERCA DEL LOGO */}
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="md:col-span-2 flex justify-center md:justify-start"
-                >
-                  <div className="text-center md:text-left">
-                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
-                      DESAFÍO
-                    </h2>
-                    <div className="mt-1 h-1 w-16 md:w-20 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full mx-auto md:mx-0"></div>
-                  </div>
-                </motion.div>
+                  {/* Título y separador */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                    className="flex-shrink-0 md:w-auto"
+                  >
+                    <div className="text-center md:text-left">
+                      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight mb-2">
+                        DESAFÍO
+                      </h2>
+                      <div className="h-1 w-20 md:w-24 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full"></div>
+                    </div>
+                  </motion.div>
 
-                {/* Texto descriptivo - MÁS CERCA */}
-                <motion.div
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  className="md:col-span-8 flex items-center"
-                >
-                  <div className="w-full">
-                    <p className="text-xs md:text-sm text-gray-700 leading-relaxed text-center md:text-left">
-                      Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
-                    </p>
-                  </div>
-                </motion.div>
+                  {/* Descripción */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="flex-grow"
+                  >
+                    <div className="bg-gradient-to-r from-gray-50 to-white/50 rounded-xl p-4 border border-gray-200/50">
+                      <p className="text-sm md:text-base text-gray-700 leading-relaxed text-center md:text-left">
+                        Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* Sección de Cursos - EMPIEZA JUSTO DESPUÉS */}
+        {/* Sección de Cursos */}
         <section className="pt-2 pb-16 md:pb-32 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -565,7 +565,7 @@ function App() {
           </motion.div>
         </section>
 
-        {/* Botón Generalidades con submenú - POSICIÓN FIJADA RESPONSIVE */}
+        {/* Botón Generalidades */}
         <div className="fixed bottom-6 md:bottom-8 left-4 md:left-6 z-40">
           <div className="relative">
             <motion.button
@@ -585,7 +585,6 @@ function App() {
               <span>Generalidades</span>
             </motion.button>
 
-            {/* Submenú de Generalidades */}
             <AnimatePresence>
               {generalidadesOpen && (
                 <motion.div
@@ -678,7 +677,6 @@ function App() {
           flex: 1;
         }
 
-        /* Asegurar que el botón no se sobreponga en móviles */
         @media (max-width: 768px) {
           main {
             padding-bottom: 80px;
