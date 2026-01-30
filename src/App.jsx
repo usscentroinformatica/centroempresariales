@@ -310,68 +310,67 @@ function App() {
         </section>
 
         {/* Sección DESAFÍO - NUEVO DISEÑO COMPACTO */}
-        {/* Sección DESAFÍO - NUEVO DISEÑO COMPACTO */}
-<section className="py-3 md:py-4 px-4">
-  <div className="container mx-auto">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.3 }}
-      className="max-w-4xl mx-auto"  {/* CAMBIÉ de max-w-7xl a max-w-4xl */}
-    >
-      {/* Contenedor principal compacto */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 p-5 md:p-6">
-        <div className="flex flex-col md:flex-row items-center gap-5 md:gap-6">
-          
-          {/* Logo pequeño */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex-shrink-0"
-          >
-            <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-gradient-to-br from-[#012c65]/10 to-[#1e4a8a]/5 rounded-2xl p-3 border border-[#012c65]/20">
-              <img 
-                src={Logito} 
-                alt="Desafío" 
-                className="w-full h-full object-contain"
-              />
-            </div>
-          </motion.div>
+        <section className="py-3 md:py-4 px-4">
+          <div className="container mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="max-w-7xl mx-auto"
+            >
+              {/* Contenedor principal compacto */}
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 p-5 md:p-6">
+                <div className="flex flex-col md:flex-row items-center gap-5 md:gap-6">
+                  
+                  {/* Logo pequeño */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4, duration: 0.5 }}
+                    className="flex-shrink-0"
+                  >
+                    <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-gradient-to-br from-[#012c65]/10 to-[#1e4a8a]/5 rounded-2xl p-3 border border-[#012c65]/20">
+                      <img 
+                        src={Logito} 
+                        alt="Desafío" 
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  </motion.div>
 
-          {/* Título y separador */}
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex-shrink-0 md:w-auto"
-          >
-            <div className="text-center md:text-left">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight mb-2">
-                DESAFÍO
-              </h2>
-              <div className="h-1 w-20 md:w-24 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full"></div>
-            </div>
-          </motion.div>
+                  {/* Título y separador */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                    className="flex-shrink-0 md:w-auto"
+                  >
+                    <div className="text-center md:text-left">
+                      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight mb-2">
+                        DESAFÍO
+                      </h2>
+                      <div className="h-1 w-20 md:w-24 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full"></div>
+                    </div>
+                  </motion.div>
 
-          {/* Descripción */}
-          <motion.div
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex-grow"
-          >
-            <div className="bg-gradient-to-r from-gray-50 to-white/50 rounded-xl p-4 border border-gray-200/50">
-              <p className="text-sm md:text-base text-gray-700 leading-relaxed text-center md:text-left">
-                Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </motion.div>
-  </div>
-</section>
+                  {/* Descripción */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="flex-grow"
+                  >
+                    <div className="bg-gradient-to-r from-gray-50 to-white/50 rounded-xl p-4 border border-gray-200/50">
+                      <p className="text-sm md:text-base text-gray-700 leading-relaxed text-center md:text-left">
+                        Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
         {/* Sección de Cursos */}
         <section className="pt-2 pb-16 md:pb-32 px-4">
