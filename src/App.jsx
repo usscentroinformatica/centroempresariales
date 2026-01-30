@@ -340,10 +340,10 @@ function App() {
               {/* Contenedor de Título y Texto */}
               <div className="flex-1">
                 <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-                  {/* Título DESAFÍO GENERAL */}
+                  {/* Título DESAFÍO */}
                   <div className="flex-shrink-0">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
-                      DESAFÍO GENERAL
+                      DESAFÍO 
                     </h2>
                     <div className="mt-2 h-1 w-32 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full"></div>
                   </div>
