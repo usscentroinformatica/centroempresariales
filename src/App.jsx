@@ -309,14 +309,14 @@ function App() {
           </div>
         </section>
 
-        {/* Sección DESAFÍO - NUEVO DISEÑO COMPACTO */}
+        {/* Sección DESAFÍO - ANCHO REDUCIDO */}
         <section className="py-3 md:py-4 px-4">
           <div className="container mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="max-w-7xl mx-auto"
+              className="max-w-4xl mx-auto"  {/* ANCHO REDUCIDO AQUÍ */}
             >
               {/* Contenedor principal compacto */}
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 p-5 md:p-6">
