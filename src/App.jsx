@@ -278,7 +278,7 @@ function App() {
                 className="w-full max-w-3xl h-auto max-h-48 md:max-h-[350px] object-contain mx-auto mb-2 md:mb-4"
               />
               
-              {/* Texto DESAFÍO DEL CHALLENGE - 1G centrado */}
+              {/* Texto DESAFÍO GENERAL */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -286,7 +286,7 @@ function App() {
                 className="text-center"
               >
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight mb-4">
-                  DESAFÍO DEL CHALLENGE - 1G
+                  DESAFÍO GENERAL
                 </h2>
                 <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed px-4">
                   Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
