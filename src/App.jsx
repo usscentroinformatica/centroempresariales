@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiExternalLink, FiFileText, FiChevronRight, FiDownload, FiCalendar, FiInfo } from 'react-icons/fi';
+import { FiMenu, FiX, FiExternalLink, FiFileText } from 'react-icons/fi';
 
 // Importa las imágenes
 import CEP from './assets/CEP.png';
@@ -104,11 +104,6 @@ function App() {
           <h4 className="font-bold text-[#3A86FF] mb-4 text-lg text-center">Aula Virtual</h4>
           <div className="space-y-4">
             <div className="text-center">
-              <p className="text-sm text-gray-600 mb-4">
-                Accede al aula virtual para gestionar tus actividades
-              </p>
-            </div>
-            <div className="text-center">
               <a 
                 href="https://ulearning.com.pe/" 
                 target="_blank" 
@@ -136,68 +131,18 @@ function App() {
         <div className="p-4 bg-[#012c65]/10 rounded-xl border border-[#012c65]/20">
           <h4 className="font-bold text-[#012c65] mb-4 text-lg">Opciones disponibles:</h4>
           <ul className="space-y-3">
-            <li className="flex items-center justify-between gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50 group">
-              <div className="flex items-center gap-3">
-                <div className="bg-[#012c65] text-white p-2 rounded-lg">
-                  <FiDownload className="w-4 h-4" />
-                </div>
-                <span className="font-medium text-gray-700">Documento de Bases</span>
-              </div>
-              <FiChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#012c65]" />
+            <li className="flex items-center gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50">
+              ✅ Opción1
             </li>
             
-            <li className="flex items-center justify-between gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50 group">
-              <div className="flex items-center gap-3">
-                <div className="bg-[#012c65] text-white p-2 rounded-lg">
-                  <FiCalendar className="w-4 h-4" />
-                </div>
-                <span className="font-medium text-gray-700">Cronograma de Actividades</span>
-              </div>
-              <FiChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#012c65]" />
+            <li className="flex items-center gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50">
+              ✅ Opción2
             </li>
             
-            <li className="flex items-center justify-between gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50 group">
-              <div className="flex items-center gap-3">
-                <div className="bg-[#012c65] text-white p-2 rounded-lg">
-                  <FiInfo className="w-4 h-4" />
-                </div>
-                <span className="font-medium text-gray-700">Información del Jurado</span>
-              </div>
-              <FiChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#012c65]" />
-            </li>
-            
-            <li className="flex items-center justify-between gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50 group">
-              <div className="flex items-center gap-3">
-                <div className="bg-[#012c65] text-white p-2 rounded-lg">
-                  <FiFileText className="w-4 h-4" />
-                </div>
-                <span className="font-medium text-gray-700">Formatos y Plantillas</span>
-              </div>
-              <FiChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#012c65]" />
-            </li>
-            
-            <li className="flex items-center justify-between gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50 group">
-              <div className="flex items-center gap-3">
-                <div className="bg-[#012c65] text-white p-2 rounded-lg">
-                  <FiExternalLink className="w-4 h-4" />
-                </div>
-                <span className="font-medium text-gray-700">Recursos Adicionales</span>
-              </div>
-              <FiChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#012c65]" />
+            <li className="flex items-center gap-2 text-sm p-3 hover:bg-[#012c65]/5 rounded-lg border border-gray-200/50">
+              ✅ Opción3
             </li>
           </ul>
-          
-          <div className="mt-6 pt-4 border-t border-gray-300/50 text-center">
-            <p className="text-sm text-gray-600 mb-3">
-              Selecciona una opción para ver más detalles
-            </p>
-            <button
-              onClick={() => setGeneralidadesOpen(false)}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-            >
-              Cerrar opciones
-            </button>
-          </div>
         </div>
       </div>
     )
@@ -222,31 +167,31 @@ function App() {
 
   return (
     <div className="flex flex-col bg-gradient-to-b from-gray-50 to-white min-h-screen">
-      {/* Navbar */}
+      {/* Navbar - REDUCIDO en altura */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm"
       >
-        <div className="container mx-auto px-4 py-2">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="h-24 md:h-32 flex items-center"
+              className="h-16 md:h-20 flex items-center"
             >
               <img 
                 src={LogoCentro} 
                 alt="Centros Empresariales" 
-                className="h-full w-auto object-contain max-w-[300px] md:max-w-[400px] hover:scale-110 transition-transform duration-300"
+                className="h-full w-auto object-contain max-w-[200px] md:max-w-[280px] hover:scale-110 transition-transform duration-300"
               />
             </motion.div>
 
-            <div className="hidden md:flex space-x-4 items-center">
+            <div className="hidden md:flex space-x-3 items-center">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleRegistroClick}
-                className="font-medium px-5 py-2.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 shadow-md hover:shadow-lg transition-all duration-300"
+                className="font-medium px-4 py-2 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 shadow-md hover:shadow-lg transition-all duration-300 text-sm"
               >
                 Registro
               </motion.button>
@@ -257,7 +202,7 @@ function App() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => toggleCategory(cat.id)}
-                  className={`font-medium px-5 py-2.5 rounded-lg text-white shadow-md hover:shadow-lg transition-all duration-300 ${
+                  className={`font-medium px-4 py-2 rounded-lg text-white shadow-md hover:shadow-lg transition-all duration-300 text-sm ${
                     activeCategory === cat.id 
                       ? cat.color === 'rosa' 
                         ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
@@ -301,7 +246,7 @@ function App() {
                       handleRegistroClick();
                       setMobileMenuOpen(false);
                     }}
-                    className="font-medium text-center px-4 py-3.5 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 transition-all shadow-md"
+                    className="font-medium text-center px-4 py-3 rounded-lg text-white bg-[#012c65] hover:bg-[#012c65]/90 transition-all shadow-md text-sm"
                   >
                     Registro
                   </motion.button>
@@ -314,7 +259,7 @@ function App() {
                         toggleCategory(cat.id);
                         setMobileMenuOpen(false);
                       }}
-                      className={`font-medium text-center px-4 py-3.5 rounded-lg text-white transition-all shadow-md ${
+                      className={`font-medium text-center px-4 py-3 rounded-lg text-white transition-all shadow-md text-sm ${
                         activeCategory === cat.id 
                           ? cat.color === 'rosa' 
                             ? 'bg-[#FE2577] hover:bg-[#FE2577]/90' 
@@ -339,7 +284,7 @@ function App() {
                       toggleGeneralidades();
                       setMobileMenuOpen(false);
                     }}
-                    className="font-medium text-center px-4 py-3.5 rounded-lg text-white bg-[#012c65]/90 hover:bg-[#012c65] transition-all shadow-md"
+                    className="font-medium text-center px-4 py-3 rounded-lg text-white bg-[#012c65]/90 hover:bg-[#012c65] transition-all shadow-md text-sm"
                   >
                     Generalidades
                   </motion.button>
@@ -351,7 +296,7 @@ function App() {
       </motion.nav>
 
       {/* Contenido principal */}
-      <main className="flex-grow pt-36 md:pt-44 relative">
+      <main className="flex-grow pt-28 md:pt-36 relative">
         {/* Sección del Logo Emprende Tech */}
         <section className="pt-6 md:pt-8 pb-0 bg-gradient-to-r from-gray-50/50 to-white/50 overflow-visible">
           <div className="container mx-auto px-4 overflow-visible">
@@ -625,7 +570,7 @@ function App() {
                     damping: 30,
                     mass: 0.6
                   }}
-                  className="absolute bottom-full left-0 mb-4 z-50 min-w-[280px] md:min-w-[320px]"
+                  className="absolute bottom-full left-0 mb-4 z-50 min-w-[240px] md:min-w-[280px]"
                 >
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }}
@@ -636,6 +581,13 @@ function App() {
                     <div className="mb-5">
                       {generalidadesOptions.content}
                     </div>
+
+                    <button
+                      className="mt-4 w-full py-2.5 rounded-lg font-medium text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 border border-gray-300"
+                      onClick={() => setGeneralidadesOpen(false)}
+                    >
+                      Cerrar
+                    </button>
                   </motion.div>
                 </motion.div>
               )}
