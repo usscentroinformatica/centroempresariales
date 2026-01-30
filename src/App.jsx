@@ -317,20 +317,20 @@ function App() {
           </div>
         </section>
 
-        {/* Sección DESAFÍO con Logo, Título y Texto - MISMA ALTURA Y DISTRIBUCIÓN QUE BOTONES */}
-        <section className="py-8 md:py-10 px-4">
+        {/* Sección DESAFÍO con Logo, Título y Texto - AJUSTADO */}
+        <section className="py-4 md:py-6 px-4">
           <div className="container mx-auto">
             <div className="max-w-7xl mx-auto">
-              {/* Misma grid que los botones pero en una sola fila */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-                {/* Logo Logito - TAMAÑO REDUCIDO SIN FONDO */}
+              {/* Grid más compacta */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-center">
+                {/* Logo Logito - MÁS PEQUEÑO */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
-                  className="md:col-span-3 flex justify-center"
+                  className="md:col-span-2 flex justify-center"
                 >
-                  <div className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 flex items-center justify-center">
+                  <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center">
                     <img 
                       src={Logito} 
                       alt="Desafío" 
@@ -339,30 +339,30 @@ function App() {
                   </div>
                 </motion.div>
 
-                {/* Título DESAFÍO - CENTRADO VERTICALMENTE */}
+                {/* Título DESAFÍO - MÁS CERCA DEL LOGO */}
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  className="md:col-span-3 flex justify-center md:justify-start"
+                  className="md:col-span-2 flex justify-center md:justify-start"
                 >
                   <div className="text-center md:text-left">
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
                       DESAFÍO
                     </h2>
-                    <div className="mt-2 h-1 w-20 md:w-24 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full mx-auto md:mx-0"></div>
+                    <div className="mt-1 h-1 w-16 md:w-20 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full mx-auto md:mx-0"></div>
                   </div>
                 </motion.div>
 
-                {/* Texto descriptivo - MISMA ALTURA QUE LOS DEMÁS */}
+                {/* Texto descriptivo - MÁS CERCA */}
                 <motion.div
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
-                  className="md:col-span-6 flex items-center"
+                  className="md:col-span-8 flex items-center"
                 >
-                  <div className="w-full h-full flex items-center">
-                    <p className="text-sm md:text-base text-gray-700 leading-relaxed text-center md:text-left">
+                  <div className="w-full">
+                    <p className="text-xs md:text-sm text-gray-700 leading-relaxed text-center md:text-left">
                       Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
                     </p>
                   </div>
@@ -373,14 +373,14 @@ function App() {
         </section>
 
         {/* Sección de Cursos - EMPIEZA JUSTO DESPUÉS */}
-        <section className="pt-0 pb-16 md:pb-32 px-4">
+        <section className="pt-2 pb-16 md:pb-32 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
             <div className="container mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
                 {categories.map((category, index) => (
                   <motion.div
                     key={category.id}
@@ -401,7 +401,7 @@ function App() {
                     }}
                   >
                     <div className="relative w-full flex flex-col items-center">
-                      <div className={`w-40 h-40 md:w-48 md:h-48 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
+                      <div className={`w-36 h-36 md:w-40 md:h-40 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
                         activeCategory === category.id 
                           ? category.color === 'rosa' 
                             ? 'bg-gradient-to-br from-[#FE2577]/20 to-[#FE2577]/5 shadow-2xl shadow-[#FE2577]/30 border-[#FE2577]/30' 
@@ -417,7 +417,7 @@ function App() {
                           transition={{ duration: 0.5 }}
                           src={category.logo}
                           alt={category.title}
-                          className="w-full h-full object-contain p-6"
+                          className="w-full h-full object-contain p-5"
                         />
                       </div>
                     </div>
@@ -446,20 +446,20 @@ function App() {
                             damping: 30,
                             mass: 0.6
                           }}
-                          className="relative left-0 right-0 mt-6 z-40 px-2 w-full"
+                          className="relative left-0 right-0 mt-4 z-40 px-2 w-full"
                         >
                           <motion.div 
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15, duration: 0.4 }}
-                            className="bg-white rounded-2xl shadow-2xl p-5 border border-gray-200"
+                            className="bg-white rounded-2xl shadow-2xl p-4 border border-gray-200"
                           >
-                            <div className="mb-5">
+                            <div className="mb-4">
                               {category.content}
                             </div>
 
                             <button
-                              className="mt-4 w-full py-2.5 rounded-lg font-medium text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 md:hidden border border-gray-300"
+                              className="mt-3 w-full py-2 rounded-lg font-medium text-xs text-gray-700 bg-gray-100 hover:bg-gray-200 md:hidden border border-gray-300"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 setActiveCategory(null);
@@ -493,7 +493,7 @@ function App() {
                   }}
                 >
                   <div className="relative w-full flex flex-col items-center">
-                    <div className={`w-40 h-40 md:w-48 md:h-48 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
+                    <div className={`w-36 h-36 md:w-40 md:h-40 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
                       activeCategory === emprendeTech.id 
                         ? 'bg-gradient-to-br from-[#3A86FF]/20 to-[#3A86FF]/5 shadow-2xl shadow-[#3A86FF]/30 border-[#3A86FF]/30' 
                         : 'bg-white shadow-xl backdrop-blur-sm hover:shadow-2xl transition-all'
@@ -505,7 +505,7 @@ function App() {
                         transition={{ duration: 0.5 }}
                         src={emprendeTech.logo}
                         alt={emprendeTech.title}
-                        className="w-full h-full object-contain p-6"
+                        className="w-full h-full object-contain p-5"
                       />
                     </div>
                   </div>
@@ -534,20 +534,20 @@ function App() {
                           damping: 30,
                           mass: 0.6
                         }}
-                        className="relative left-0 right-0 mt-6 z-40 px-2 w-full"
+                        className="relative left-0 right-0 mt-4 z-40 px-2 w-full"
                       >
                         <motion.div 
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.15, duration: 0.4 }}
-                          className="bg-white rounded-2xl shadow-2xl p-5 border border-gray-200"
+                          className="bg-white rounded-2xl shadow-2xl p-4 border border-gray-200"
                         >
-                          <div className="mb-5">
+                          <div className="mb-4">
                             {emprendeTech.content}
                           </div>
 
                           <button
-                            className="mt-4 w-full py-2.5 rounded-lg font-medium text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 md:hidden border border-gray-300"
+                            className="mt-3 w-full py-2 rounded-lg font-medium text-xs text-gray-700 bg-gray-100 hover:bg-gray-200 md:hidden border border-gray-300"
                             onClick={(e) => {
                               e.stopPropagation();
                               setActiveCategory(null);
