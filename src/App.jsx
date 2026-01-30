@@ -317,55 +317,67 @@ function App() {
           </div>
         </section>
 
-        {/* Sección DESAFÍO GENERAL con Logo, Título y Texto en una línea */}
-        <section className="pt-4 pb-8 md:pb-12 px-4">
+        {/* Sección DESAFÍO con Logo, Título y Texto - ALINEADO CON BOTONES */}
+        <section className="py-8 md:py-10 px-4">
           <div className="container mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col lg:flex-row items-start lg:items-center gap-6 md:gap-8 max-w-7xl mx-auto"
-            >
-              {/* Logo Logito */}
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-xl bg-gradient-to-br from-[#012c65]/10 to-[#1e4a8a]/5 flex items-center justify-center p-3 border border-gray-300/50">
-                  <img 
-                    src={Logito} 
-                    alt="Desafío General" 
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </div>
-
-              {/* Contenedor de Título y Texto */}
-              <div className="flex-1">
-                <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-                  {/* Título DESAFÍO */}
-                  <div className="flex-shrink-0">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
-                      DESAFÍO 
-                    </h2>
-                    <div className="mt-2 h-1 w-32 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full"></div>
+            <div className="max-w-7xl mx-auto">
+              {/* Misma estructura que la grid de botones pero en una fila */}
+              <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 md:gap-10">
+                {/* Logo Logito - MISMO TAMAÑO que logos de botones */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                  className="flex-shrink-0"
+                >
+                  <div className="w-40 h-40 md:w-48 md:h-48 rounded-3xl flex items-center justify-center bg-gradient-to-br from-[#012c65]/10 to-[#1e4a8a]/5 border-2 border-gray-300 shadow-xl">
+                    <img 
+                      src={Logito} 
+                      alt="Desafío" 
+                      className="w-full h-full object-contain p-8"
+                    />
                   </div>
+                </motion.div>
 
-                  {/* Texto descriptivo */}
-                  <div className="flex-1">
-                    <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-2xl">
-                      Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
-                    </p>
+                {/* Contenedor de Título y Texto - ALINEADO CON EL LOGO */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  className="flex-1"
+                >
+                  <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 h-full min-h-[160px] md:min-h-[192px]">
+                    {/* Título DESAFÍO - ALINEADO VERTICALMENTE CON EL LOGO */}
+                    <div className="md:w-1/4 flex-shrink-0 flex items-center">
+                      <div>
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
+                          DESAFÍO
+                        </h2>
+                        <div className="mt-2 h-1 w-20 md:w-24 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full"></div>
+                      </div>
+                    </div>
+
+                    {/* Texto descriptivo - MISMA ALTURA QUE EL LOGO */}
+                    <div className="md:w-3/4 flex items-center">
+                      <div className="bg-gradient-to-r from-gray-50 to-gray-100/50 p-5 md:p-6 rounded-xl border border-gray-300/50 w-full">
+                        <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                          Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* Sección de Cursos */}
-        <section className="pt-8 md:pt-4 pb-16 md:pb-32 px-4">
+        {/* Sección de Cursos - EMPIEZA JUSTO DESPUÉS */}
+        <section className="pt-0 pb-16 md:pb-32 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className="container mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 max-w-7xl mx-auto">
@@ -374,7 +386,7 @@ function App() {
                     key={category.id}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 + (index * 0.1), duration: 0.5 }}
+                    transition={{ delay: 0.7 + (index * 0.1), duration: 0.5 }}
                     whileHover={{ 
                       scale: 1.05,
                       y: -8
@@ -466,7 +478,7 @@ function App() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8, duration: 0.5 }}
+                  transition={{ delay: 1.0, duration: 0.5 }}
                   whileHover={{ 
                     scale: 1.05,
                     y: -8
@@ -559,7 +571,7 @@ function App() {
             <motion.button
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 1.2 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleGeneralidades}
