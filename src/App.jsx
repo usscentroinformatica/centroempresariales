@@ -9,6 +9,7 @@ import CIS from './assets/CIS.png';
 import LogoCentro from './assets/logo_centro_empresariales.png';
 import Logo8 from './assets/EMPRENDE_TECH.png';
 import Logo7 from './assets/7.png';
+import Logito from './assets/logito.png'; // Asegúrate de tener este archivo
 
 function App() {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -312,28 +313,55 @@ function App() {
                 alt="Logo principal" 
                 className="w-full max-w-3xl h-auto max-h-48 md:max-h-[350px] object-contain mx-auto mb-2 md:mb-4"
               />
-              
-              {/* Texto DESAFÍO GENERAL */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-center"
-              >
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight mb-4">
-                  DESAFÍO GENERAL
-                </h2>
-                <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed px-4">
-                  Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
-                </p>
-                <div className="mt-4 h-1 w-24 md:w-32 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] mx-auto rounded-full"></div>
-              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Sección DESAFÍO GENERAL con Logo, Título y Texto en una línea */}
+        <section className="pt-4 pb-8 md:pb-12 px-4">
+          <div className="container mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col lg:flex-row items-start lg:items-center gap-6 md:gap-8 max-w-7xl mx-auto"
+            >
+              {/* Logo Logito */}
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-xl bg-gradient-to-br from-[#012c65]/10 to-[#1e4a8a]/5 flex items-center justify-center p-3 border border-gray-300/50">
+                  <img 
+                    src={Logito} 
+                    alt="Desafío General" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Contenedor de Título y Texto */}
+              <div className="flex-1">
+                <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+                  {/* Título DESAFÍO GENERAL */}
+                  <div className="flex-shrink-0">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#012c65] to-[#1e4a8a] bg-clip-text text-transparent tracking-tight">
+                      DESAFÍO GENERAL
+                    </h2>
+                    <div className="mt-2 h-1 w-32 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] rounded-full"></div>
+                  </div>
+
+                  {/* Texto descriptivo */}
+                  <div className="flex-1">
+                    <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-2xl">
+                      Desarrollar una solución tecnológica innovadora que resuelva un problema real, con una propuesta de valor clara, comunicada en inglés y defendida en español ante un jurado.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>
 
         {/* Sección de Cursos */}
-        <section className="pt-8 md:pt-12 pb-16 md:pb-32 px-4">
+        <section className="pt-8 md:pt-4 pb-16 md:pb-32 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
