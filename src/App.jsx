@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiExternalLink, FiFileText, FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import { FiMenu, FiX, FiExternalLink, FiFileText } from 'react-icons/fi';
 
 // Importa las imágenes
 import CEP from './assets/CEP.png';
@@ -13,65 +13,9 @@ import Logo7 from './assets/7.png';
 function App() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [generalidadesOpen, setGeneralidadesOpen] = useState(false);
-  const [selectedDocument, setSelectedDocument] = useState(null);
 
-  // Datos para los documentos PDF
-  const documentos = [
-    {
-      id: 1,
-      titulo: 'Manual del Participante',
-      descripcion: 'Guía completa para participantes del programa',
-      url: '/documentos/manual-participante.pdf'
-    },
-    {
-      id: 2,
-      titulo: 'Reglamento Interno',
-      descripcion: 'Normas y reglas del centro empresarial',
-      url: '/documentos/reglamento-interno.pdf'
-    },
-    {
-      id: 3,
-      titulo: 'Cronograma de Actividades',
-      descripcion: 'Calendario de eventos y talleres',
-      url: '/documentos/cronograma-actividades.pdf'
-    },
-    {
-      id: 4,
-      titulo: 'Formatos de Inscripción',
-      descripcion: 'Documentos para registro de participantes',
-      url: '/documentos/formatos-inscripcion.pdf'
-    },
-    {
-      id: 5,
-      titulo: 'Guía de Buenas Prácticas',
-      descripcion: 'Recomendaciones para el éxito en el programa',
-      url: '/documentos/guias-buenas-practicas.pdf'
-    },
-    {
-      id: 6,
-      titulo: 'Información General del Programa',
-      descripcion: 'Detalles sobre objetivos y metodología',
-      url: '/documentos/informacion-programa.pdf'
-    }
-  ];
-
-  // Función para abrir PDF
-  const abrirPDF = (url, titulo) => {
-    setSelectedDocument({ url, titulo });
-    // En un entorno real, aquí podrías:
-    // 1. Abrir el PDF en una nueva pestaña
-    window.open(url, '_blank');
-    
-    // 2. O mostrar un visor de PDF integrado
-    // setMostrarVisorPDF(true);
-    
-    // 3. O descargar el archivo
-    // const link = document.createElement('a');
-    // link.href = url;
-    // link.download = titulo + '.pdf';
-    // link.click();
-  };
+  // URL directa del PDF - Cambia esta URL por la de tu PDF
+  const pdfUrl = 'https://ejemplo.com/documento.pdf';
 
   const categories = [
     {
@@ -191,9 +135,15 @@ function App() {
     alert('Abrir formulario de contacto');
   };
 
+  // Función para abrir el PDF en nueva pestaña
+  const handleGeneralidadesClick = () => {
+    // Cambia esta URL por la de tu PDF real
+    window.open(pdfUrl, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="flex flex-col bg-gradient-to-b from-gray-50 to-white min-h-screen">
-      {/* Navbar */}
+      {/* Navbar - Mantengo el código original del navbar aquí */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -309,147 +259,26 @@ function App() {
         </AnimatePresence>
       </motion.nav>
 
-      {/* Botón Generalidades - Posición fija en esquina inferior izquierda */}
-      <div className="fixed bottom-6 left-6 z-40">
-        <motion.div
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="relative"
+      {/* Botón Generalidades SIMPLE */}
+      <motion.div
+        initial={{ x: -50, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="fixed bottom-6 left-6 z-40"
+      >
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleGeneralidadesClick}
+          className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
         >
-          {/* Botón principal */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setGeneralidadesOpen(!generalidadesOpen)}
-            className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
-          >
-            <FiFileText className="w-5 h-5" />
-            <span>Generalidades</span>
-            {generalidadesOpen ? (
-              <FiChevronUp className="w-4 h-4" />
-            ) : (
-              <FiChevronDown className="w-4 h-4" />
-            )}
-          </motion.button>
+          <FiFileText className="w-5 h-5" />
+          <span>Generalidades</span>
+        </motion.button>
+      </motion.div>
 
-          {/* Menú desplegable */}
-          <AnimatePresence>
-            {generalidadesOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                transition={{ type: "spring", damping: 25 }}
-                className="absolute bottom-full left-0 mb-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden"
-              >
-                <div className="p-3 bg-gradient-to-r from-[#012c65] to-[#1e4a8a]">
-                  <h3 className="text-white font-semibold text-sm">Documentos Disponibles</h3>
-                  <p className="text-white/80 text-xs mt-1">Haz clic para abrir o descargar</p>
-                </div>
-                
-                <div className="max-h-80 overflow-y-auto">
-                  {documentos.map((doc) => (
-                    <motion.button
-                      key={doc.id}
-                      whileHover={{ x: 5 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => abrirPDF(doc.url, doc.titulo)}
-                      className="w-full text-left px-4 py-3 hover:bg-gray-50 border-b border-gray-100 last:border-b-0 transition-colors group"
-                    >
-                      <div className="flex items-start gap-3">
-                        <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
-                          <FiFileText className="w-4 h-4 text-[#012c65]" />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-medium text-gray-800 text-sm group-hover:text-[#012c65] transition-colors">
-                            {doc.titulo}
-                          </h4>
-                          <p className="text-gray-500 text-xs mt-1 line-clamp-2">
-                            {doc.descripcion}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.button>
-                  ))}
-                </div>
-
-                <div className="p-3 bg-gray-50 border-t border-gray-200">
-                  <p className="text-gray-500 text-xs text-center">
-                    Total: {documentos.length} documentos
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </div>
-
-      {/* Visor de PDF (opcional - puedes implementarlo después) */}
-      <AnimatePresence>
-        {selectedDocument && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
-            onClick={() => setSelectedDocument(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="p-4 bg-gradient-to-r from-[#012c65] to-[#1e4a8a] text-white flex justify-between items-center">
-                <h3 className="font-semibold">{selectedDocument.titulo}</h3>
-                <button
-                  onClick={() => setSelectedDocument(null)}
-                  className="p-2 hover:bg-white/20 rounded-lg transition-colors"
-                >
-                  <FiX size={20} />
-                </button>
-              </div>
-              <div className="p-4 h-[70vh]">
-                <div className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center bg-gray-50">
-                  <FiFileText className="w-16 h-16 text-gray-400 mb-4" />
-                  <p className="text-gray-600 font-medium">Vista previa del PDF</p>
-                  <p className="text-gray-500 text-sm mt-2">{selectedDocument.titulo}</p>
-                  <div className="mt-6 flex gap-3">
-                    <a
-                      href={selectedDocument.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-[#012c65] text-white rounded-lg hover:bg-[#012c65]/90 transition-colors"
-                    >
-                      Abrir en nueva pestaña
-                    </a>
-                    <button
-                      onClick={() => {
-                        // Simular descarga
-                        const link = document.createElement('a');
-                        link.href = selectedDocument.url;
-                        link.download = selectedDocument.titulo + '.pdf';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                      }}
-                      className="px-4 py-2 border border-[#012c65] text-[#012c65] rounded-lg hover:bg-[#012c65]/10 transition-colors"
-                    >
-                      Descargar PDF
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Contenido principal */}
+      {/* Contenido principal - Mantengo todo el contenido original */}
       <main className="flex-grow pt-36 md:pt-44">
-        {/* Sección del Logo Emprende Tech - GRANDE Y DESTACADO */}
         <section className="pt-6 md:pt-8 pb-0 bg-gradient-to-r from-gray-50/50 to-white/50 overflow-visible">
           <div className="container mx-auto px-4 overflow-visible">
             <motion.div
@@ -467,7 +296,6 @@ function App() {
           </div>
         </section>
 
-        {/* Sección de Cursos */}
         <section className="pt-2 md:pt-4 pb-32 md:pb-48 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -475,10 +303,7 @@ function App() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="container mx-auto">
-
-              {/* Grid de 4 LOGOS - 3 cursos + Emprende Tech */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 max-w-7xl mx-auto">
-                {/* Cursos principales - 3 columnas */}
                 {categories.map((category, index) => (
                   <motion.div
                     key={category.id}
@@ -498,7 +323,6 @@ function App() {
                       }
                     }}
                   >
-                    {/* Contenedor del logo */}
                     <div className="relative w-full flex flex-col items-center">
                       <div className={`w-40 h-40 md:w-48 md:h-48 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
                         activeCategory === category.id 
@@ -521,7 +345,6 @@ function App() {
                       </div>
                     </div>
 
-                    {/* Información que aparece al hacer hover/tap */}
                     <AnimatePresence>
                       {activeCategory === category.id && (
                         <motion.div
@@ -574,7 +397,6 @@ function App() {
                   </motion.div>
                 ))}
 
-                {/* Emprende Tech - Columna especial a la derecha */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -592,7 +414,6 @@ function App() {
                     }
                   }}
                 >
-                  {/* Contenedor del logo */}
                   <div className="relative w-full flex flex-col items-center">
                     <div className={`w-40 h-40 md:w-48 md:h-48 mx-auto rounded-3xl flex items-center justify-center transition-all duration-300 border-2 border-gray-300 overflow-hidden ${
                       activeCategory === emprendeTech.id 
@@ -611,7 +432,6 @@ function App() {
                     </div>
                   </div>
 
-                  {/* Información que aparece al hacer hover/tap */}
                   <AnimatePresence>
                     {activeCategory === emprendeTech.id && (
                       <motion.div
@@ -668,7 +488,6 @@ function App() {
         </section>
       </main>
       
-      {/* Footer - Siempre al fondo */}
       <footer className="bg-gray-900 text-white py-6 w-full mt-auto flex-shrink-0">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm">
@@ -677,7 +496,6 @@ function App() {
         </div>
       </footer>
 
-      {/* Estilos CSS para los colores */}
       <style jsx global>{`
         :root {
           --color-celeste: #3B82F6;
@@ -709,13 +527,6 @@ function App() {
           display: flex;
           flex-direction: column;
           flex: 1;
-        }
-
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
         }
       `}</style>
     </div>
