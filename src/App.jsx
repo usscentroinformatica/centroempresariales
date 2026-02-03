@@ -146,7 +146,20 @@ function App() {
   };
 
   const toggleCategory = (categoryId) => {
+    // Primero cambiar el estado activo
     setActiveCategory(activeCategory === categoryId ? null : categoryId);
+    
+    // Hacer scroll suave al elemento correspondiente
+    setTimeout(() => {
+      const element = document.getElementById(`card-${categoryId}`);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center',
+          inline: 'nearest'
+        });
+      }
+    }, 50);
   };
 
   const toggleGeneralidades = () => {
@@ -384,6 +397,7 @@ function App() {
                 {categories.map((category, index) => (
                   <motion.div
                     key={category.id}
+                    id={`card-${category.id}`}  {/* AGREGADO: ID único para cada tarjeta */}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.8 + (index * 0.1), duration: 0.5 }}
@@ -483,6 +497,7 @@ function App() {
                     scale: 1.05,
                     y: -8
                   }}
+                  id={`card-${emprendeTech.id}`}  {/* AGREGADO: ID único para Emprende Tech */}
                   className="relative group flex flex-col items-center"
                   onMouseEnter={() => setActiveCategory(emprendeTech.id)}
                   onMouseLeave={() => setActiveCategory(null)}
