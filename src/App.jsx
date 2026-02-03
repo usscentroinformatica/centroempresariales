@@ -397,7 +397,7 @@ function App() {
                 {categories.map((category, index) => (
                   <motion.div
                     key={category.id}
-                    id={`card-${category.id}`}  {/* AGREGADO: ID único para cada tarjeta */}
+                    id={`card-${category.id}`}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.8 + (index * 0.1), duration: 0.5 }}
@@ -497,7 +497,7 @@ function App() {
                     scale: 1.05,
                     y: -8
                   }}
-                  id={`card-${emprendeTech.id}`}  {/* AGREGADO: ID único para Emprende Tech */}
+                  id={`card-${emprendeTech.id}`}
                   className="relative group flex flex-col items-center"
                   onMouseEnter={() => setActiveCategory(emprendeTech.id)}
                   onMouseLeave={() => setActiveCategory(null)}
