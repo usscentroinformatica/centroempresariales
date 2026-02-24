@@ -948,73 +948,107 @@ function App() {
 </div>
 
         {/* Botón Generalidades */}
-        <div className="fixed bottom-6 md:bottom-8 left-4 md:left-6 z-40">
-          <div className="relative">
-            <motion.button
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1.3 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleGeneralidades}
-              className={`flex items-center gap-2 px-4 py-3 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium text-sm md:text-base ${
-                generalidadesOpen 
-                  ? 'bg-gradient-to-r from-[#00B65A] to-[#2FA84F]' 
-                  : 'bg-gradient-to-r from-[#2FA84F] to-[#00B65A]'
-              }`}
-            >
-              <FiFileText className="w-4 h-4 md:w-5 md:h-5" />
-              <span>Generalidades</span>
-            </motion.button>
+<div className="fixed bottom-6 md:bottom-8 left-4 md:left-6 z-40">
+  <div className="relative">
+    <motion.button
+      initial={{ x: -50, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ delay: 1.3 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={toggleGeneralidades}
+      className={`flex items-center gap-2 px-4 py-3 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium text-sm md:text-base ${
+        generalidadesOpen 
+          ? 'bg-gradient-to-r from-[#00B65A] to-[#2FA84F]' 
+          : 'bg-gradient-to-r from-[#2FA84F] to-[#00B65A]'
+      }`}
+    >
+      <FiFileText className="w-4 h-4 md:w-5 md:h-5" />
+      <span>Generalidades</span>
+    </motion.button>
 
-            <AnimatePresence>
-              {generalidadesOpen && (
+    <AnimatePresence>
+      {generalidadesOpen && (
+        <motion.div
+          initial={{ 
+            opacity: 0, 
+            y: 20,
+            scale: 0.95
+          }}
+          animate={{ 
+            opacity: 1, 
+            y: 0,
+            scale: 1
+          }}
+          exit={{ 
+            opacity: 0, 
+            y: 10,
+            scale: 0.95
+          }}
+          transition={{ 
+            type: "spring",
+            stiffness: 400,
+            damping: 30,
+            mass: 0.6
+          }}
+          className="absolute bottom-full left-0 mb-4 z-50 min-w-[240px] md:min-w-[280px]"
+        >
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.3 }}
+            className="bg-white rounded-2xl shadow-2xl p-5 border border-gray-200"
+          >
+            <div className="mb-5">
+              <h4 className="font-bold text-[#012c65] text-lg mb-3">Documentos disponibles:</h4>
+              <div className="grid grid-cols-1 gap-4">
+                {/* Card - Bases del Challenge */}
                 <motion.div
-                  initial={{ 
-                    opacity: 0, 
-                    y: 20,
-                    scale: 0.95
-                  }}
-                  animate={{ 
-                    opacity: 1, 
-                    y: 0,
-                    scale: 1
-                  }}
-                  exit={{ 
-                    opacity: 0, 
-                    y: 10,
-                    scale: 0.95
-                  }}
-                  transition={{ 
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 30,
-                    mass: 0.6
-                  }}
-                  className="absolute bottom-full left-0 mb-4 z-50 min-w-[240px] md:min-w-[280px]"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-gradient-to-br from-[#012c65]/10 to-[#3A86FF]/5 rounded-xl border border-[#012c65]/30 p-4 hover:shadow-lg transition-all"
                 >
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1, duration: 0.3 }}
-                    className="bg-white rounded-2xl shadow-2xl p-5 border border-gray-200"
-                  >
-                    <div className="mb-5">
-                      {generalidadesOptions.content}
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex gap-3 flex-1">
+                      <div className="w-12 h-12 rounded-lg bg-[#012c65]/20 flex items-center justify-center flex-shrink-0">
+                        <FiFileText className="w-6 h-6 text-[#012c65]" />
+                      </div>
+                      <div className="flex-1">
+                        <h5 className="font-semibold text-[#012c65] mb-1">Bases del Challenge</h5>
+                        <p className="text-xs text-gray-600">Documento oficial con todas las reglas y requisitos</p>
+                      </div>
                     </div>
-
-                    <button
-                      className="mt-4 w-full py-2.5 rounded-lg font-medium text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 border border-gray-300"
-                      onClick={() => setGeneralidadesOpen(false)}
+                  </div>
+                  <div className="mt-3 flex gap-2">
+                    <a 
+                      href={BasesPDF}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 bg-[#012c65] text-white rounded-lg hover:bg-[#1e4a8a] transition-all font-medium text-sm"
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      Cerrar
-                    </button>
-                  </motion.div>
+                      <FiExternalLink className="w-4 h-4" />
+                      <span>Ver PDF</span>
+                    </a>
+                  </div>
                 </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
+              </div>
+            </div>
+
+            <button
+              className="mt-4 w-full py-2.5 rounded-lg font-medium text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 border border-gray-300"
+              onClick={() => setGeneralidadesOpen(false)}
+            >
+              Cerrar
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+</div>
       </main>
       
       {/* Footer */}
