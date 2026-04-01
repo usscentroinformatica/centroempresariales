@@ -719,7 +719,7 @@ function App() {
                         </h3>
                       </div>
                       <p className="text-white/90 font-semibold mb-3 drop-shadow-[0_0_8px_rgba(0,182,90,0.3)]">
-                        🗓 16 feb - 1 abr
+                        🗓 16 feb - 30 abr
                       </p>
                       <p className="text-white/80 drop-shadow-[0_0_5px_rgba(0,182,90,0.2)]">
                         Registro mediante formulario oficial
@@ -749,8 +749,8 @@ function App() {
                         </h3>
                       </div>
                       <p className="text-white/90 font-semibold mb-3 drop-shadow-[0_0_8px_rgba(0,182,90,0.3)]">
-                        📆 Durante el año académico
-                      </p>
+  📆 Mayo - Octubre
+</p>
                       <p className="text-white/80 drop-shadow-[0_0_5px_rgba(0,182,90,0.2)]">
                         Acompañamiento formativo continuo
                       </p>
