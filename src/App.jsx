@@ -11,6 +11,11 @@ import Logo8 from './assets/EMPRENDE_TECH.png';
 import Logo7 from './assets/7.png';
 import Logito from './assets/logito.png';
 import Nino from './assets/nino.png';
+import Ceibos from './assets/ceibos.png';
+import Analucia from './assets/analucia.png';
+import JavierHeraud from './assets/javierheraud.png';
+import SanJose from './assets/sanjose.png';
+import RemigioSilva from './assets/remigiosilva.png';
 // Importa el PDF
 import BasesPDF from './assets/Bases - Challenge.pdf';
 
@@ -123,6 +128,16 @@ function App() {
       </div>
     )
   };
+
+  const colegiosParticipantes = [
+    { id: 1, nombre: 'Colegio participante - Los Ceibos', imagen: Ceibos },
+    { id: 2, nombre: 'Colegio participante - Analucia', imagen: Analucia },
+    { id: 3, nombre: 'Colegio participante - Javier Heraud', imagen: JavierHeraud },
+    { id: 4, nombre: 'Colegio participante - San Jose', imagen: SanJose },
+    { id: 5, nombre: 'Colegio participante - Remigio Silva', imagen: RemigioSilva }
+  ];
+
+  const colegiosCarrusel = [...colegiosParticipantes, ...colegiosParticipantes];
 
   // Combinamos todas las tarjetas para la sección superior
   const allCards = [...categories, aulaVirtual];
@@ -834,6 +849,60 @@ function App() {
                 ¡No te pierdas ninguna fecha importante!
               </p>
             </motion.div>
+          </div>
+        </div>
+
+        {/* Sección COLEGIOS PARTICIPANTES - Carrusel */}
+        <div className="pb-20 md:pb-28 px-4">
+          <div className="container mx-auto max-w-7xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-10"
+            >
+              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">
+                COLEGIOS PARTICIPANTES
+              </h3>
+              <p className="text-white/75 mt-3 text-sm md:text-base">
+                Conoce a las instituciones que forman parte del Challenge
+              </p>
+              <div className="w-20 h-1 bg-[#00B65A] mx-auto rounded-full mt-4"></div>
+            </motion.div>
+
+            <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/5 backdrop-blur-sm p-4 md:p-6">
+              <div className="pointer-events-none absolute left-0 top-0 h-full w-16 md:w-24 bg-gradient-to-r from-[#012c65] to-transparent z-10"></div>
+              <div className="pointer-events-none absolute right-0 top-0 h-full w-16 md:w-24 bg-gradient-to-l from-[#012c65] to-transparent z-10"></div>
+
+              <motion.div
+                className="flex gap-0 w-max"
+                animate={{ x: [0, -(colegiosParticipantes.length * 216)] }}
+                transition={{
+                  duration: 20,
+                  ease: 'linear',
+                  repeat: Infinity
+                }}
+              >
+                {colegiosCarrusel.map((colegio, index) => (
+                  <motion.article
+                    key={`${colegio.id}-${index}`}
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    className="w-[216px] shrink-0 flex items-center justify-center"
+                  >
+                    <div className="h-[220px] flex items-center justify-center">
+                      <div className="w-[186px] h-[186px] rounded-full bg-white/95 flex items-center justify-center border border-white/40 shadow-xl p-4">
+                        <img
+                          src={colegio.imagen}
+                          alt={colegio.nombre}
+                          className="w-full h-full rounded-full object-cover object-center"
+                        />
+                      </div>
+                    </div>
+                  </motion.article>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </div>
 
